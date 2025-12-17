@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+httpx
+langchain
+langchain-core
+langchain-community
+langchain-ollama
+langgraph
+psycopg2-binary

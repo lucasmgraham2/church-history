@@ -1,115 +1,28 @@
 # Flutter
-flutter_frontend/.dart_tool/
-flutter_frontend/.flutter-plugins
-flutter_frontend/.flutter-plugins-dependencies
-flutter_frontend/.packages
-flutter_frontend/pubspec.lock
 flutter_frontend/build/
-flutter_frontend/.gradle
-flutter_frontend/.idea/
-flutter_frontend/local.properties
-
-# Flutter Web
-flutter_frontend/web/flutter_service_worker.js
-
-# iOS
-flutter_frontend/ios/Flutter/Flutter.podspec
-flutter_frontend/ios/Flutter/flutter_export_environment.sh
-flutter_frontend/ios/.symlinks/
-flutter_frontend/ios/Flutter/Flutter.framework
-
-# Android
+flutter_frontend/.dart_tool/
+flutter_frontend/pubspec.lock
 flutter_frontend/android/.gradle/
 flutter_frontend/android/local.properties
-flutter_frontend/android/**/GeneratedPluginRegistrant.java
-flutter_frontend/android/app/release/
-flutter_frontend/android/key.properties
-
-# macOS
-flutter_frontend/macos/Flutter/Flutter-Release.xcconfig
-flutter_frontend/macos/Flutter/GeneratedPluginRegistrant.swift
-
-# Linux
-flutter_frontend/linux/flutter/generated_plugins.cmake
-
-# Windows
-flutter_frontend/windows/flutter/generated_plugins.cmake
-flutter_frontend/windows/flutter/generated_fixture_plugins.cmake
 
 # Python
-*.py[cod]
 __pycache__/
-*.so
+*.py[cod]
 .Python
-env/
 venv/
-ENV/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
+env/
 *.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Virtual environments
-.venv
 .env
 
-# IDEs
+# IDEs and editors
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
-.DS_Store
-*.sublime-project
-*.sublime-workspace
 
 # OS
 .DS_Store
 Thumbs.db
-*.log
 
-# Database
-*.db
-*.sqlite
-*.sqlite3
-
-# API Keys and Secrets
-.env.local
-.env.*.local
-*.pem
-*.key
-*.cert
-
-# Temporary files
-*.tmp
-*.bak
-*.orig
-.temp/
-tmp/
-
-# Linting and Testing
-.coverage
-htmlcov/
-.pytest_cache/
-.mypy_cache/
-.tox/
-.ruff_cache/
-
-# Node (if added in future)
-node_modules/
-npm-debug.log
-yarn-error.log
+# Local files
+local.properties

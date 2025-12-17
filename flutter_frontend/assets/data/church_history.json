@@ -18,7 +18,7 @@
           "details": "On Pentecost, 120 followers gathered in Jerusalem as Jesus had instructed. \"Suddenly a sound like the blowing of a violent wind came from heaven and filled the whole house where they were sitting\" (Acts 2:2). \"All of them were filled with the Holy Spirit\" (Acts 2:4). Peter preached to the crowd, and \"about three thousand people accepted his message and were baptized\" (Acts 2:41). This transformed a frightened group into bold proclaimers of the gospel. As Justo Gonzalez notes in \"The Story of Christianity,\" this event represented a radical democratization of God's presence - no longer confined to priests in the Temple but available to all believers. The multilingual nature of the miracle (Acts 2:8-11) foreshadowed Christianity's universal mission. Pentecost became the birth of the missional Church, commissioning ordinary believers to proclaim Jesus across cultural and linguistic barriers.",
           "keyFigures": ["Peter (the leader)", "James (Jesus's brother)", "John (the disciple)", "About 120 believers"],
           "significance": ["This event marks the beginning of the Christian Church", "It fulfilled Jesus's promise: \"Do not leave Jerusalem, but wait for the gift my Father promised\" (Acts 1:4)", "It showed that God's power was available to all believers, not just special leaders", "The dramatic conversion of 3,000 in a single day demonstrated Christianity's explosive growth potential in the right conditions"],
-          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/32/Restout_Pentecost.jpg",
+          "imageUrl": "assets/historical_images/Christus_Ravenna_Mosaic.webp",
           "tags": ["Apostolic Age", "Jerusalem", "Power and Authority"],
           "sources": ["Acts 2", "Justo Gonzalez, The Story of Christianity Vol. 1"]
         },
@@ -44,7 +44,7 @@
           "details": "Peter had a vision where \"he saw heaven opened and something like a large sheet being let down to earth by its four corners\" filled with animals Jews weren't allowed to eat. God told him, \"Do not call anything impure that God has made clean\" (Acts 10:15). Shortly after, Peter was invited to the house of Cornelius, a non-Jewish Roman soldier. When Peter preached about Jesus, \"the Holy Spirit came on all who heard the message\" (Acts 10:44). Peter was amazed: \"the gift of the Holy Spirit had been poured out even on Gentiles\" (Acts 10:45). He baptized Cornelius and his whole family. This event broke the biggest barrier in the early Church - now all people, not just Jews, could follow Jesus. Church historian Darrell Cole notes that Peter's experience revealed God's radical inclusion: the vision directly challenged Jewish ceremonial law as a prerequisite for salvation. Peter's statement, \"Who am I to think that I could oppose God?\" (Acts 11:17) shows his recognition that God's grace transcends ethnic and cultural boundaries. This pivotal moment set the stage for the Jerusalem Council and Christianity's universal mission.",
           "keyFigures": ["Peter (the leader)", "Cornelius (a Roman soldier)", "The Holy Spirit"],
           "significance": ["This broke the barrier between Jewish and non-Jewish believers", "It showed Christianity was meant for all people, not just Jews", "It allowed Christianity to spread throughout the Mediterranean world", "Peter's vision demonstrates that God's revelation can contradict established traditions and cultural norms"],
-          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Peter%27s_Vision_by_Henry_Davenport_Northrop.png",
+          "imageUrl": "assets/historical_images/cornelius.jpg",
           "tags": ["Expansion", "Gentiles", "Barrier Breaking"],
           "sources": ["Acts 10-11", "Darrell Cole, Listening to the Past", "Justo Gonzalez, The Story of Christianity Vol. 1"]
         },
@@ -179,6 +179,19 @@
           "sources": ["Muratorian Fragment", "Irenaeus, Against Heresies 3.11.8", "Tertullian, Against Marcion", "Justo Gonzalez, The Story of Christianity Vol. 1"]
         },
         {
+          "id": "origen_writings",
+          "title": "Origen's Theological Writings",
+          "year": "220-250 AD",
+          "location": "Alexandria and Caesarea",
+          "description": "Origen, one of the most brilliant Christian scholars, wrote extensive commentaries on Scripture and developed sophisticated Christian theology.",
+          "details": "Origen of Alexandria (c. 184-253 AD) was one of the most prolific and influential theologians of the early Church. He produced thousands of works, including biblical commentaries, theological treatises, and apologetic writings. His most famous work, 'On First Principles,' was the first systematic exposition of Christian theology. Origen pioneered allegorical interpretation of Scripture, arguing that the Bible contained multiple layers of meaning - literal, moral, and spiritual. He wrote: 'The Scriptures were written by the Spirit of God, and have a meaning, not such only as is apparent at first sight, but also another, which escapes the notice of most' (On First Principles 4.1.7). Origen also produced the Hexapla, a massive six-column comparison of Old Testament texts. He was a devoted scholar who castrated himself to avoid temptation and focus on study - a decision the church fathers later criticized. Despite controversies over some of his speculative ideas (like the pre-existence of souls and universal salvation), Origen's impact was immense. Eusebius called him 'the greatest teacher of the Church after the apostles.' Jerome, though critical of some views, translated many of Origen's works and built upon his scholarship. His rigorous biblical study and philosophical sophistication helped Christianity engage educated Greeks and Romans. While some of his teachings were later condemned, his method of allegorical interpretation and his defense of Christianity shaped Christian thought for centuries.",
+          "keyFigures": ["Origen of Alexandria", "Eusebius (his biographer)", "Students of the Catechetical School"],
+          "significance": ["First systematic Christian theology", "Pioneered allegorical biblical interpretation", "Helped Christianity engage Greek philosophy", "Trained many church leaders and scholars", "His methods influenced medieval and Reformation theology"],
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/89/Origen.jpg",
+          "tags": ["Theology and Scholarship", "Biblical Interpretation", "Alexandria School"],
+          "sources": ["Origen, On First Principles", "Eusebius, Church History 6", "Jerome, Letter 84", "Justo Gonzalez, The Story of Christianity Vol. 1"]
+        },
+        {
           "id": "diocletian_persecution",
           "title": "Diocletian's Great Persecution",
           "year": "303-311 AD",
@@ -200,7 +213,7 @@
           "details": "On the eve of the Battle of the Milvian Bridge (312), Constantine reportedly saw a sign of the cross with the words \"in this sign conquer\" (Eusebius, Life of Constantine I.28). He ordered the Chi-Rho on his soldiers' shields and won the battle. In 313, Constantine and Licinius issued the Edict of Milan, stating that Christians and all others should have freedom to follow whatever religion they choose. This did not make Christianity the state religion but ended official persecution and returned confiscated property. Gonzalez notes this pivot moved Christianity from persecuted minority to legally favored faith, reshaping its relationship with imperial power.",
           "keyFigures": ["Emperor Constantine", "Emperor Licinius", "Roman Christian communities"],
           "significance": ["Ended state persecution and legalized Christianity", "Linked imperial power with Christian symbols and favor", "Returned church properties and allowed public worship", "Set stage for Christianity's rapid public growth in the empire"],
-          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/Raphael_-_The_Vision_of_the_Cross.jpg",
+          "imageUrl": "assets/historical_images/Constantine_Musei_Capitolini.webp",
           "tags": ["Legalization", "Church and State", "Turning Point"],
           "sources": ["Eusebius, Life of Constantine", "Edict of Milan text (313)", "Justo Gonzalez, The Story of Christianity Vol. 1"]
         },

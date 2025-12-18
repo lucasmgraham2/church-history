@@ -1,6 +1,16 @@
 # Church History Explorer
 
-A simplified medical application with authentication and Flutter frontend.
+An interactive application for exploring and learning about church history through timelines, eras, and historical events. This project combines a Flutter mobile frontend with Python backend services for data management and AI-powered insights.
+
+## Project Overview
+
+Church History Explorer provides an accessible platform for students, researchers, and enthusiasts to discover key events, figures, and developments across different eras of Christian history. The application features:
+
+- **Interactive Timeline**: Browse church history organized by historical eras
+- **Detailed Era Information**: Explore key events, theological developments, and influential figures
+- **Historical Images**: View curated historical imagery related to church periods
+- **AI-Powered Insights**: Get intelligent context and explanations about historical events
+- **Multi-Era Exploration**: Navigate seamlessly through different periods of church history
 
 ## Quick Setup
 
@@ -18,11 +28,9 @@ chmod +x setup_macos_postgres.sh
 ```
 
 **What this creates:**
-- Database: `bariatric_db`
-- User: `bariatric_user`
-- Password: `bariatric_password`
-- Host: `localhost`
-- Port: `5432`
+- PostgreSQL database for storing user data and historical content
+- Authentication system for user accounts
+- Connection pool for reliable data access
 
 ### 2. Start Services
 ```bash
@@ -36,31 +44,23 @@ python api_gateway/main_simple.py
 cd flutter_frontend
 flutter run
 
-# Terminal 4 - LLM Serivce
-uvicorn llm_service.app.main:app --host 0.0.0.0 --port 8001 --reload
-```
-
-### 3. Test the Setup
-Create sample users (optional):
-```bash
-python scripts/create_sample_data.py
+# Terminal 4 - LLM Service
+python llm_service/main_simple.py
 ```
 
 ## Architecture
 
-- **Storage Service**: User authentication and patient data management (PostgreSQL)
-- **API Gateway**: API orchestration, token management, and chat routing
-- **LLM Service**: Multi-agent AI system with medical expertise (Port 8001)
-- **Flutter Frontend**: Mobile application with authentication and AI chat
+- **Storage Service**: User authentication and historical data management (PostgreSQL)
+- **API Gateway**: API orchestration, token management, and request routing
+- **LLM Service**: AI-powered service for generating historical insights and context
+- **Flutter Frontend**: Cross-platform mobile application for church history exploration
 
-### 🤖 **NEW: Multi-Agent AI System**
-The app now includes an intelligent medical assistant that uses multiple specialized agents:
-- **Supervisor**: Routes queries to appropriate specialists
-- **Medical Agent**: Answers medical questions and provides guidance
-- **Data Agent**: Retrieves patient information from database
-- **Synthesizer**: Combines responses into coherent answers
+### Features
 
-See **[MULTI_AGENT_SETUP.md](MULTI_AGENT_SETUP.md)** for complete setup and usage guide.
+- **Church History Database**: Comprehensive data on historical eras, events, and figures
+- **Historical Content**: Curated images and detailed descriptions of important periods
+- **AI Insights**: Intelligent explanations and context about historical developments
+- **User Authentication**: Secure account system for personalized exploration experience
 
 ## API Endpoints
 
@@ -68,6 +68,7 @@ See **[MULTI_AGENT_SETUP.md](MULTI_AGENT_SETUP.md)** for complete setup and usag
 - `POST /auth/login` - User authentication
 - `GET /auth/me` - Get current user profile
 - `POST /auth/logout` - User logout
+- Historical data endpoints for retrieving era information, events, and images
 
 ## Requirements
 
@@ -75,17 +76,27 @@ See **[MULTI_AGENT_SETUP.md](MULTI_AGENT_SETUP.md)** for complete setup and usag
 - **PostgreSQL 14+** (auto-installed by setup scripts)
 - **Flutter SDK** for mobile development
 
+## Content
+
+The application will include historical data covering various church history eras:
+- Early Christian Church
+- The Imperial Church
+- Medieval Christianity 
+- Reformation Era
+- Modern Christianity
+
 ## Troubleshooting
 
 **Database Connection Issues:**
 - Ensure PostgreSQL service is running
-- Check credentials match: `bariatric_user` / `bariatric_password`
+- Verify database credentials are correct
 
 **Port Conflicts:**
 - Storage Service: Port 8002
 - API Gateway: Port 8000
+- LLM Service: Port 8001
 - Make sure these ports are available
 
-## Team Development
+## Development
 
-See `TEAM_DATABASE_SETUP.md` for detailed setup instructions and team collaboration guidelines.
+This is a project focused on making church history accessible and learnable.

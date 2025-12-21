@@ -37,15 +37,17 @@ class HistoricalFigure {
       name: json['name'] as String? ?? '',
       period: json['period'] as String? ?? '',
       role: json['role'] as String? ?? '',
-      birthYear: json['birth_year'] as String? ?? '',
-      deathYear: json['death_year'] as String? ?? '',
+      birthYear: (json['birth_year'] ?? json['birthYear']) as String? ?? '',
+      deathYear: (json['death_year'] ?? json['deathYear']) as String? ?? '',
       biography: json['biography'] as String? ?? '',
       significance: json['significance'] as String? ?? '',
       majorAchievements: List<String>.from(
-        json['major_achievements'] as List<dynamic>? ?? [],
+        (json['major_achievements'] ?? json['majorAchievements'])
+                as List<dynamic>? ??
+            [],
       ),
       influences: List<String>.from(json['influences'] as List<dynamic>? ?? []),
-      portraitUrl: json['portrait_url'] as String?,
+      portraitUrl: (json['portrait_url'] ?? json['portraitUrl']) as String?,
       tags: List<String>.from(json['tags'] as List<dynamic>? ?? []),
     );
   }
@@ -169,13 +171,13 @@ class HistoricalEvent {
       description: json['description'] as String? ?? '',
       details: json['details'] as String? ?? '',
       keyFigures: List<String>.from(
-        json['key_figures'] as List<dynamic>? ?? [],
+        (json['key_figures'] ?? json['keyFigures']) as List<dynamic>? ?? [],
       ),
       significance: List<String>.from(
         json['significance'] as List<dynamic>? ?? [],
       ),
-      imageUrl: json['image_url'] as String?,
-      mapUrl: json['map_url'] as String?,
+      imageUrl: (json['image_url'] ?? json['imageUrl']) as String?,
+      mapUrl: (json['map_url'] ?? json['mapUrl']) as String?,
       tags: List<String>.from(json['tags'] as List<dynamic>? ?? []),
       sources: List<String>.from(json['sources'] as List<dynamic>? ?? []),
     );

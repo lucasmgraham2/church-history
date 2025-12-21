@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/church_history_models.dart';
 
@@ -21,14 +20,72 @@ class ChurchHistoryService {
       final Map<String, dynamic> jsonData = jsonDecode(jsonString);
       final List<dynamic> erasList = jsonData['eras'] as List<dynamic>;
 
-      _cachedEras = erasList
+      // Build eras, then normalize events (sort chronologically and dedupe)
+      final loadedEras = erasList
           .map((era) => ChurchHistoryEra.fromJson(era as Map<String, dynamic>))
           .toList();
+
+      _cachedEras = loadedEras.map(_normalizeEra).toList();
 
       return _cachedEras!;
     } catch (e) {
       throw Exception('Failed to load church history data: $e');
     }
+  }
+
+  /// Normalize an era's events: sort chronologically and remove duplicates
+  static ChurchHistoryEra _normalizeEra(ChurchHistoryEra era) {
+    // Dedupe by id and by (title+year) pair
+    final seenIds = <String>{};
+    final seenTitleYear = <String>{};
+    final deduped = <HistoricalEvent>[];
+
+    for (final e in era.events) {
+      final idKey = e.id.trim().toLowerCase();
+      final tyKey = ('${e.title}|${e.year}').trim().toLowerCase();
+      if (idKey.isEmpty) {
+        // If no id, fallback to title+year uniqueness
+        if (seenTitleYear.contains(tyKey)) continue;
+        seenTitleYear.add(tyKey);
+        deduped.add(e);
+      } else {
+        // Prefer id uniqueness; also guard by title+year
+        if (seenIds.contains(idKey) || seenTitleYear.contains(tyKey)) continue;
+        seenIds.add(idKey);
+        seenTitleYear.add(tyKey);
+        deduped.add(e);
+      }
+    }
+
+    // Sort by parsed year ascending
+    deduped.sort((a, b) => _yearKey(a.year).compareTo(_yearKey(b.year)));
+
+    return ChurchHistoryEra(
+      id: era.id,
+      title: era.title,
+      startYear: era.startYear,
+      endYear: era.endYear,
+      description: era.description,
+      color: era.color,
+      icon: era.icon,
+      events: deduped,
+      figures: era.figures,
+    );
+  }
+
+  /// Convert a year string (e.g., "1517 AD", "1536–1541 AD", "270-400 AD", "~67 AD")
+  /// into a sortable integer key. BC becomes negative.
+  static int _yearKey(String yearStr) {
+    final s = yearStr.trim();
+    if (s.isEmpty) return 999999; // push unknown years to the end
+
+    // Extract the first number in the string
+    final match = RegExp(r'(\d{1,4})').firstMatch(s);
+    if (match == null) return 999999;
+    final n = int.tryParse(match.group(1)!) ?? 999999;
+
+    final isBC = s.toUpperCase().contains('BC');
+    return isBC ? -n : n;
   }
 
   /// Get mock data for church history (loads from JSON)

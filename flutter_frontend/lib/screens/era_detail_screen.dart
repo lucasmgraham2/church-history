@@ -1,5 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:church_history_explorer/models/church_history_models.dart';
+import 'package:church_history_explorer/screens/ai_assistant_screen.dart';
+import 'package:church_history_explorer/screens/era_quiz_screen.dart';
 import 'package:church_history_explorer/screens/event_detail_screen.dart';
 
 class EraDetailScreen extends StatefulWidget {
@@ -12,6 +18,19 @@ class EraDetailScreen extends StatefulWidget {
 
 class _EraDetailScreenState extends State<EraDetailScreen> {
   String? _expandedEventId;
+  int? _quizHighScore;
+  List<EraQuizQuestion> _quizQuestions = [];
+  bool _quizLoading = false;
+  bool _quizLoadFailed = false;
+
+  static const int _quizQuestionLimit = 8;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadQuizHighScore();
+    _loadQuizQuestions();
+  }
 
   Color _hexToColor(String hexColor) {
     var v = hexColor.replaceAll('#', '');
@@ -19,22 +38,264 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
     return Color(int.parse('0x$v'));
   }
 
+  Future<void> _loadQuizHighScore() async {
+    final prefs = await SharedPreferences.getInstance();
+    final score = prefs.getInt('quiz_highscore_${widget.era.id}');
+    if (!mounted) return;
+    setState(() {
+      _quizHighScore = score;
+    });
+  }
+
+  Future<void> _persistHighScore(int score) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('quiz_highscore_${widget.era.id}', score);
+  }
+
+  Future<void> _loadQuizQuestions() async {
+    setState(() {
+      _quizLoading = true;
+      _quizLoadFailed = false;
+    });
+
+    try {
+      final path = 'assets/data/${widget.era.id}_quiz.json';
+      final jsonStr = await rootBundle.loadString(path);
+      final decoded = jsonDecode(jsonStr) as Map<String, dynamic>;
+      final list = decoded['questions'] as List<dynamic>? ?? [];
+      final questions = list
+          .map((e) => EraQuizQuestion.fromJson(e as Map<String, dynamic>))
+          .where((q) => q.id.isNotEmpty && q.prompt.isNotEmpty)
+          .toList();
+
+      if (!mounted) return;
+      setState(() {
+        _quizQuestions = questions;
+        _quizLoading = false;
+      });
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _quizLoading = false;
+        _quizLoadFailed = true;
+        _quizQuestions = [];
+      });
+    }
+  }
+
+  void _openQuiz(Color eraColor) {
+    if (_quizLoading) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Quiz is still loading...')),
+      );
+      return;
+    }
+
+    if (_quizLoadFailed || _quizQuestions.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Quiz unavailable. Please try again.')),
+      );
+      return;
+    }
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => EraQuizScreen(
+          eraId: widget.era.id,
+          eraTitle: widget.era.title,
+          accentColor: eraColor,
+          questions: _quizQuestions,
+          questionCount: _quizQuestionLimit,
+          onCompleted: (score, total) async {
+            if (!mounted) return;
+            final prev = _quizHighScore ?? 0;
+            if (score > prev) {
+              setState(() => _quizHighScore = score);
+              await _persistHighScore(score);
+            }
+
+            if (!mounted) return;
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('You scored $score of $total'),
+                duration: const Duration(seconds: 3),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildQuizIconWithScore(Color eraColor) {
+    final label = _quizHighScore == null
+        ? '-'
+        : _quizHighScore!.clamp(0, _quizQuestionLimit).toString();
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Icon(Icons.quiz_outlined),
+        if (_quizHighScore != null) ...[
+          const SizedBox(width: 6),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+            decoration: BoxDecoration(
+              color: eraColor.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(4),
+              border: Border.all(
+                color: eraColor.withOpacity(0.3),
+                width: 1,
+              ),
+            ),
+            child: Text(
+              '$label/$_quizQuestionLimit',
+              style: TextStyle(
+                fontSize: 11,
+                color: eraColor,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildQuizCard(Color eraColor) {
+    final scoreText = _quizHighScore == null
+        ? 'No score yet'
+        : 'High score: $_quizHighScore/$_quizQuestionLimit';
+
+    return Card(
+      margin: const EdgeInsets.fromLTRB(16, 16, 16, 4),
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: eraColor.withOpacity(0.35)),
+          gradient: LinearGradient(
+            colors: [
+              eraColor.withOpacity(0.12),
+              eraColor.withOpacity(0.04),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Row(
+          children: [
+            CircleAvatar(
+              radius: 26,
+              backgroundColor: eraColor.withOpacity(0.18),
+              foregroundColor: eraColor,
+              child: const Icon(Icons.quiz_outlined, size: 26),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Test your knowledge',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.grey[900],
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'Quick ${_quizQuestionLimit}-question quiz with shuffled prompts each time.',
+                    style: TextStyle(color: Colors.grey[700], height: 1.4),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    scoreText,
+                    style: TextStyle(
+                      color: eraColor,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 12),
+            ElevatedButton.icon(
+              onPressed: () => _openQuiz(eraColor),
+              icon: const Icon(Icons.play_arrow),
+              label: const Text('Take quiz'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: eraColor,
+                foregroundColor: Colors.white,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final era = widget.era;
     final eraColor = _hexToColor(era.color);
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(era.title),
-      ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: era.events.length,
-        itemBuilder: (context, index) {
-          final event = era.events[index];
-          final isExpanded = _expandedEventId == event.id;
-          return _buildEventCard(context, event, eraColor, isExpanded);
-        },
+    final hasQuiz = _quizQuestions.isNotEmpty && !_quizLoading;
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(era.title),
+          actions: [
+            if (hasQuiz)
+              Padding(
+                padding: const EdgeInsets.only(right: 4),
+                child: IconButton(
+                  tooltip: _quizHighScore == null
+                      ? 'Take the era quiz'
+                      : 'High score: $_quizHighScore/$_quizQuestionLimit',
+                  onPressed: () => _openQuiz(eraColor),
+                  icon: _buildQuizIconWithScore(eraColor),
+                ),
+              ),
+          ],
+          bottom: TabBar(
+            tabs: const [
+              Tab(icon: Icon(Icons.event), text: 'Events'),
+              Tab(icon: Icon(Icons.people), text: 'People'),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            // Events list
+            ListView.builder(
+              padding: const EdgeInsets.all(16),
+              itemCount: era.events.length,
+              itemBuilder: (context, index) {
+                final event = era.events[index];
+                final isExpanded = _expandedEventId == event.id;
+                return _buildEventCard(
+                  context,
+                  event,
+                  eraColor,
+                  isExpanded,
+                );
+              },
+            ),
+            // People list
+            ListView.builder(
+              padding: const EdgeInsets.all(16),
+              itemCount: era.figures.length,
+              itemBuilder: (context, index) {
+                final fig = era.figures[index];
+                return _buildFigureCard(context, fig, eraColor);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -228,8 +489,8 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
                                         .map(
                                           (figure) => Chip(
                                             label: Text(figure),
-                                            backgroundColor:
-                                                eraColor.withOpacity(0.2),
+                                            backgroundColor: eraColor
+                                                .withOpacity(0.2),
                                             labelStyle: TextStyle(
                                               color: eraColor,
                                               fontWeight: FontWeight.w600,
@@ -255,7 +516,8 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
                                     (sig) => Padding(
                                       padding: const EdgeInsets.only(bottom: 8),
                                       child: Row(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Icon(
                                             Icons.check_circle,
@@ -279,24 +541,47 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
                                   ),
                                   const SizedBox(height: 16),
                                 ],
-
-                                // Details button
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: ElevatedButton.icon(
-                                    onPressed: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) => EventDetailScreen(
-                                            event: event,
-                                            eraColor: eraColor,
-                                          ),
+                                // Action buttons: Ask AI + View Details
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: ElevatedButton.icon(
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  AiAssistantScreen(
+                                                    initialContext:
+                                                        '${event.title} (${event.year})',
+                                                  ),
+                                            ),
+                                          );
+                                        },
+                                        icon: const Icon(Icons.smart_toy),
+                                        label: const Text(
+                                          'Ask AI About This Event',
                                         ),
-                                      );
-                                    },
-                                    icon: const Icon(Icons.open_in_full),
-                                    label: const Text('View Full Details'),
-                                  ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 12),
+                                    Expanded(
+                                      child: ElevatedButton.icon(
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  EventDetailScreen(
+                                                    event: event,
+                                                    eraColor: eraColor,
+                                                  ),
+                                            ),
+                                          );
+                                        },
+                                        icon: const Icon(Icons.open_in_full),
+                                        label: const Text('View Full Details'),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
@@ -311,6 +596,146 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFigureCard(
+    BuildContext context,
+    HistoricalFigure figure,
+    Color eraColor,
+  ) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 12),
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        figure.name,
+                        style: const TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        figure.role,
+                        style: TextStyle(color: Colors.grey[700], fontSize: 13),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        '${figure.birthYear} – ${figure.deathYear}',
+                        style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ),
+                if (figure.portraitUrl != null &&
+                    figure.portraitUrl!.isNotEmpty)
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.network(
+                      figure.portraitUrl!,
+                      width: 64,
+                      height: 64,
+                      fit: BoxFit.cover,
+                      // Gracefully handle 404s and other network errors
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          width: 64,
+                          height: 64,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: eraColor.withOpacity(0.3),
+                            ),
+                          ),
+                          child: Icon(Icons.person, color: eraColor, size: 32),
+                        );
+                      },
+                      loadingBuilder: (context, child, progress) {
+                        if (progress == null) return child;
+                        return Container(
+                          width: 64,
+                          height: 64,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[100],
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: eraColor.withOpacity(0.2),
+                            ),
+                          ),
+                          child: SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              value: progress.expectedTotalBytes != null
+                                  ? (progress.cumulativeBytesLoaded /
+                                        progress.expectedTotalBytes!)
+                                  : null,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                else
+                  Container(
+                    width: 64,
+                    height: 64,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: eraColor.withOpacity(0.3)),
+                    ),
+                    child: Icon(Icons.person, color: eraColor, size: 32),
+                  ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            Text(
+              figure.biography,
+              maxLines: 4,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 13,
+                color: Colors.grey[800],
+                height: 1.4,
+              ),
+            ),
+            const SizedBox(height: 12),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: figure.tags
+                  .map(
+                    (t) => Chip(
+                      label: Text(t),
+                      backgroundColor: eraColor.withOpacity(0.15),
+                      labelStyle: TextStyle(
+                        color: eraColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  )
+                  .toList(),
+            ),
+          ],
         ),
       ),
     );

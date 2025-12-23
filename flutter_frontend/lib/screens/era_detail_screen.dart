@@ -707,6 +707,19 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
                   ),
               ],
             ),
+            if (figure.portraitCredit != null &&
+                figure.portraitCredit!.isNotEmpty) ...[
+              const SizedBox(height: 8),
+              Text(
+                'Portrait: ${figure.portraitCredit}',
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 11,
+                  color: Colors.grey[600],
+                ),
+              ),
+            ],
             const SizedBox(height: 12),
             Text(
               figure.biography,

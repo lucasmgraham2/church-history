@@ -5,9 +5,9 @@
       "prompt": "Pentecost around 33 AD marked the Church's birth in Jerusalem with approximately how many converts reported that day?",
       "options": [
         "3,000 people baptized after Peter's sermon",
-        "12 converts chosen as the first council",
-        "500 believers witnessed the risen Jesus",
-        "100 disciples from Jesus' ministry"
+        "500 people baptized after Peter's sermon",
+        "Several hundred people baptized after the apostles' preaching",
+        "About 150 people from the original disciples' network"
       ],
       "correctAnswer": "3,000 people baptized after Peter's sermon",
       "explanation": "Acts 2:41 records ~3,000 baptisms, demonstrating Christianity's explosive start in Jerusalem's largest Jewish gathering."
@@ -17,9 +17,9 @@
       "prompt": "How did Peter's encounter with Cornelius (c. 40-41 AD) fundamentally change Christianity's trajectory?",
       "options": [
         "It proved the Church could welcome non-Jewish peoples without Temple conversion",
-        "It established Peter's authority over all apostolic missions",
-        "It proved Jerusalem remained the only center of Christian power",
-        "It showed Jewish law and ritual were absolutely required for salvation"
+        "It established that Gentiles could be baptized but still had to follow Jewish dietary laws",
+        "It required all future converts to undergo formal rabbinical training",
+        "It shifted Christianity's missionary focus entirely away from Jewish populations"
       ],
       "correctAnswer": "It proved the Church could welcome non-Jewish peoples without Temple conversion",
       "explanation": "This event in Caesarea broke the barrier between Judaism and the broader Mediterranean world, enabling global expansion."
@@ -29,9 +29,9 @@
       "prompt": "Stephen's execution (34-35 AD) triggered what historical consequence for the Early Church?",
       "options": [
         "Persecution that scattered believers, spreading the faith beyond Jerusalem",
-        "An immediate unified ban on missionary activity across all regions",
-        "The election of a new high priest opposed to all Christian preaching",
-        "A Roman military campaign to destroy the apostles' tombs"
+        "Persecution that prompted the apostles to leave Jerusalem temporarily while others remained",
+        "Increased support from Jewish religious authorities who saw Christians as allies",
+        "A consolidation of the Church in Jerusalem as believers sought safety in numbers"
       ],
       "correctAnswer": "Persecution that scattered believers, spreading the faith beyond Jerusalem",
       "explanation": "Acts 8:1-4 records that Stephen's death launched persecution that actually accelerated the gospel's geographic spread."
@@ -40,12 +40,12 @@
       "id": "ec_damascus_conversion",
       "prompt": "Paul's conversion on the Damascus Road (34-35 AD) transformed him from what role to what role?",
       "options": [
-        "From persecutor of Christians to Christianity's greatest missionary and theologian",
-        "From a local synagogue teacher to Peter's rival in Jerusalem",
-        "From a Roman centurion to commander of Christian armies",
-        "From a tax collector to Jerusalem's chief rabbi"
+        "From persecutor of Christians to a great missionary and theologian",
+        "From a Jewish temple official to a sympathetic observer of the Christian movement",
+        "From a Roman government informant to a peaceful religious teacher",
+        "From a leading rabbi to a retired scholar seeking spiritual solitude"
       ],
-      "correctAnswer": "From persecutor of Christians to Christianity's greatest missionary and theologian",
+      "correctAnswer": "From persecutor of Christians to a great missionary and theologian",
       "explanation": "Saul was actively hunting Christians when he encountered the risen Jesus, redirecting history's course."
     },
     {
@@ -53,9 +53,9 @@
       "prompt": "Paul's missionary journeys (46-68 AD) spanned roughly what geographic area?",
       "options": [
         "The entire Mediterranean region from Judea to Rome and beyond",
-        "Only Judea and the immediate Jewish territories",
-        "Single cities within Syria and Egypt",
-        "Remote desert monasteries isolated from cities"
+        "Primarily Palestinian territories with occasional trips to Syria",
+        "Coastal cities in North Africa and Egypt, avoiding interior regions",
+        "Parts of Asia Minor and Greece, but never reaching Rome or Western Europe"
       ],
       "correctAnswer": "The entire Mediterranean region from Judea to Rome and beyond",
       "explanation": "Paul strategically planted churches in major trade hubs, creating a network that made Christianity a Mediterranean faith within a generation."
@@ -65,9 +65,9 @@
       "prompt": "The Jerusalem Council (49-50 AD) settled a critical question: Did Gentile believers need to undergo what Jewish practice?",
       "options": [
         "Circumcision and full adoption of Mosaic Law",
-        "Annual pilgrimage to the Jerusalem Temple",
-        "Study in a rabbinical school for years",
-        "Renunciation of all pagan family relationships"
+        "Circumcision as a sign of covenant membership, though not necessarily all ceremonial laws",
+        "A period of probation living in Jerusalem before full community acceptance",
+        "Renunciation of their native languages in favor of Aramaic worship"
       ],
       "correctAnswer": "Circumcision and full adoption of Mosaic Law",
       "explanation": "The council ruled that Gentiles were not required to become Jewish in practice, freeing the mission to expand without cultural barriers."
@@ -77,9 +77,9 @@
       "prompt": "General Titus destroyed Jerusalem's Temple in 70 AD during a Roman siege. How did this reshape Christianity historically?",
       "options": [
         "Christians were forced to develop theology and practice independent of Temple institutions",
-        "It proved Christianity had no future in the Roman world",
-        "Jewish Christians were able to rebuild the Temple with Roman approval",
-        "It had no significant impact on Christian identity or theology"
+        "Jews and Christians cooperated to rebuild the Temple with Roman backing",
+        "It shifted all Christian worship exclusively to Jerusalem and rebuilt Temple practices",
+        "It caused most Christians to abandon faith in God, viewing it as divine abandonment"
       ],
       "correctAnswer": "Christians were forced to develop theology and practice independent of Temple institutions",
       "explanation": "After 70 AD, Christians increasingly emphasized Jesus as the eternal Temple rather than a physical building, solidifying Christian distinctiveness."
@@ -89,9 +89,9 @@
       "prompt": "Emperor Nero's persecution of Christians (64-68 AD) marked what historical turning point?",
       "options": [
         "The first official, empire-wide targeting of Christians as a group based on religion",
-        "The final end of Christianity in the Roman world",
-        "The moment Rome officially converted to Christianity",
-        "The establishment of peace between Rome and all religious minorities"
+        "A local disturbance in Rome that had little impact beyond the capital city",
+        "A brief period of hostility that quickly led to official government toleration of Christians",
+        "An isolated incident of violence that did not recur in subsequent reigns"
       ],
       "correctAnswer": "The first official, empire-wide targeting of Christians as a group based on religion",
       "explanation": "Nero blamed Christians for Rome's fire and executed many, including (tradition says) Peter and Paul, establishing a precedent for state persecution."
@@ -101,9 +101,9 @@
       "prompt": "Ignatius of Antioch, writing letters while en route to martyrdom (c. 105-117 AD), emphasized what organizational principle for the Church?",
       "options": [
         "Unity under a single bishop in each city to maintain orthodoxy and order",
-        "Complete independence of each congregation with no central authority",
-        "Shared leadership by all members without distinction",
-        "Submission to Rome's political leaders for legal protection"
+        "A loose federation of house churches with minimal organizational structure",
+        "Shared authority equally distributed among all church members regardless of role",
+        "Leadership by a council of elderly members chosen annually by democratic vote"
       ],
       "correctAnswer": "Unity under a single bishop in each city to maintain orthodoxy and order",
       "explanation": "Ignatius' letters show the post-apostolic Church moving toward hierarchical structures, with one bishop leading each community."
@@ -113,9 +113,9 @@
       "prompt": "Justin Martyr's writings (c. 155 AD) served what purpose in the Early Church's engagement with Roman society?",
       "options": [
         "Defending Christians to the emperor by explaining their peaceful practices and ethical commitments",
-        "Advocating for violent revolution against Roman rule",
-        "Arguing that Christians should abandon Greek philosophy entirely",
-        "Claiming Christians were exempt from Roman law and taxes"
+        "Requesting special political privileges for Christians within the Roman government",
+        "Arguing that Christians should separate completely from philosophical inquiry and reason",
+        "Claiming that Christian churches should operate as independent political entities"
       ],
       "correctAnswer": "Defending Christians to the emperor by explaining their peaceful practices and ethical commitments",
       "explanation": "Justin's 'Apology' represented early Christian intellectuals engaging the Roman world on philosophical grounds, legitimizing the faith to educated elites."
@@ -125,9 +125,9 @@
       "prompt": "By the end of the 2nd century, what was the significance of churches recognizing specific writings as 'apostolic Scripture'?",
       "options": [
         "It established shared theological boundaries and protected true teaching from false gospels and heresy",
-        "It meant each church could invent its own sacred texts freely",
-        "It proved Rome had conquered all of Christendom politically",
-        "It required burning all copies of Paul's letters"
+        "It allowed individual churches to accept or reject texts based on local preference without consequences",
+        "It meant that all Christians would follow Roman leadership in all matters of doctrine",
+        "It eliminated the need for any interpretive discussion or theological reasoning about Scripture"
       ],
       "correctAnswer": "It established shared theological boundaries and protected true teaching from false gospels and heresy",
       "explanation": "Canon formation—rejecting Marcion's edits, affirming four Gospels and apostolic letters—created doctrinal unity across dispersed churches."
@@ -137,33 +137,21 @@
       "prompt": "Emperor Diocletian's 'Great Persecution' (303-311 AD) was the final, most violent empire-wide campaign against Christians. How did it end?",
       "options": [
         "Diocletian abdicated; his successor Galerius issued an edict of toleration before his death",
-        "Christians successfully conquered the empire militarily",
-        "All Christians were completely eliminated from Roman territories",
-        "Christianity voluntarily disbanded to avoid further violence"
+        "Christians successfully launched a military rebellion that forced the emperor to capitulate",
+        "Persecution was intensified and expanded to all provinces with even greater severity",
+        "The Senate voted to execute all Christians but Diocletian refused to enforce the order"
       ],
       "correctAnswer": "Diocletian abdicated; his successor Galerius issued an edict of toleration before his death",
       "explanation": "By 311 AD, persecuting Christianity proved futile; Galerius' toleration edict paved the way for Constantine's legalization just two years later."
-    },
-    {
-      "id": "ec_gospels_written",
-      "prompt": "The four Gospels were written down during what period of Early Church history?",
-      "options": [
-        "65-100 AD, as apostolic eyewitnesses aged and persecution threatened oral tradition",
-        "10-30 AD, immediately after Jesus' resurrection",
-        "200+ AD, centuries after the apostles were gone",
-        "They were never written; the Church only had oral accounts"
-      ],
-      "correctAnswer": "65-100 AD, as apostolic eyewitnesses aged and persecution threatened oral tradition",
-      "explanation": "Pressured by time and threats to memory, churches committed Jesus' story to writing, creating the textual foundation for Christianity's unity."
     },
     {
       "id": "ec_geographical_spread",
       "prompt": "By 100 AD, Christianity had spread from Judea primarily through which geographic networks?",
       "options": [
         "Mediterranean trade routes connecting major cities in Asia, Africa, and Europe",
-        "Inland desert monasteries isolated from urban centers",
-        "Purely through Rome's military conquest of new territories",
-        "Only within Israel and surrounding Judean regions"
+        "Roman military garrisons deliberately spreading the faith as propaganda",
+        "Isolated desert communities independent of major urban centers",
+        "Exclusively through Jerusalem as the sole missionary headquarters"
       ],
       "correctAnswer": "Mediterranean trade routes connecting major cities in Asia, Africa, and Europe",
       "explanation": "Merchants, missionaries, and traveling believers used established trade networks to carry the gospel rapidly across the Mediterranean world."
@@ -173,9 +161,9 @@
       "prompt": "Early Christian martyrs' willingness to face death rather than renounce their faith had what practical historical effect?",
       "options": [
         "Their courage and forgiveness impressed observers and deepened believers' commitment despite persecution",
-        "It convinced Roman emperors immediately to stop all persecution efforts",
-        "It proved Christians were weak and incapable of resistance",
-        "It had no effect on how other people viewed Christianity"
+        "It persuaded emperors to immediately grant Christianity official legal status",
+        "It demonstrated that Christians were disloyal to Rome and deserved severe punishment",
+        "It caused most believers to flee Christianity and seek safety in state-approved religions"
       ],
       "correctAnswer": "Their courage and forgiveness impressed observers and deepened believers' commitment despite persecution",
       "explanation": "The martyrs' witness became a tool of mission: a later Christian wrote, 'The blood of martyrs is the seed of the Church.'"
@@ -185,12 +173,48 @@
       "prompt": "In the first two centuries, Early Church communities primarily met in what setting?",
       "options": [
         "Private homes (house churches) rather than dedicated temple buildings",
-        "Large public stadiums constructed specifically for Christian worship",
-        "Roman military camps under state protection",
-        "Jewish Temple courts with rabbinical authorization"
+        "Public Roman temples that were willing to rent space to Christian groups",
+        "Underground catacombs exclusively used for Christian worship and safety",
+        "Official government buildings that granted Christians regular meeting spaces"
       ],
       "correctAnswer": "Private homes (house churches) rather than dedicated temple buildings",
       "explanation": "Without wealth or legal status, Christians gathered in homes, which actually facilitated rapid multiplication of communities."
+    },
+    {
+      "id": "ec_origen_theology",
+      "prompt": "Origen's theological writings and biblical scholarship (c. 220-250 AD) advanced Early Christian thought primarily through what method?",
+      "options": [
+        "Pioneering allegorical interpretation of Scripture to reveal multiple layers of meaning",
+        "Rejecting all philosophical reasoning and returning purely to literal biblical reading",
+        "Establishing rigid doctrinal rules that eliminated all theological debate",
+        "Arguing that Christians should abandon scholarly study in favor of mystical experience"
+      ],
+      "correctAnswer": "Pioneering allegorical interpretation of Scripture to reveal multiple layers of meaning",
+      "explanation": "Origen's sophisticated hermeneutical methods helped Christianity engage educated Greeks and Romans, establishing Christian theology as intellectually rigorous."
+    },
+    {
+      "id": "ec_confessors_identity",
+      "prompt": "In the Early Church, those who survived persecution but didn't deny their faith were called 'confessors.' What role did they play in the community?",
+      "options": [
+        "They held spiritual authority and were honored for their faithful witness",
+        "They were permanently separated from communion as punishment for not achieving martyrdom",
+        "They were required to do penance for seven years before rejoining regular worship",
+        "They were immediately appointed as bishops without theological training"
+      ],
+      "correctAnswer": "They held spiritual authority and were honored for their faithful witness",
+      "explanation": "Confessors became symbols of spiritual courage and depth, often influencing church decisions and offering intercession for others in the community."
+    },
+    {
+      "id": "ec_catechumens_training",
+      "prompt": "How did the Early Church prepare new believers (catechumens) before baptism?",
+      "options": [
+        "Through extended teaching in Christian doctrine, moral living, and faith practices",
+        "Immediate baptism upon verbal confession without any prior instruction",
+        "Multi-year apprenticeships serving as unpaid laborers in church buildings",
+        "Requiring candidates to memorize the entire Old Testament before acceptance"
+      ],
+      "correctAnswer": "Through extended teaching in Christian doctrine, moral living, and faith practices",
+      "explanation": "The catechetical process ensured believers understood the faith and committed to discipleship; this gradual formation became standard practice as the Church matured."
     }
   ]
 }

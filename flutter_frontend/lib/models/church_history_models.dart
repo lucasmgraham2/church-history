@@ -14,6 +14,8 @@ class HistoricalFigure {
   final List<String> majorAchievements; // Key accomplishments
   final List<String> influences; // People or ideas that influenced them
   final String? portraitUrl; // Image URL
+  final String? portraitCredit; // Image credit/citation text
+  final String? portraitCreditUrl; // Optional link to source/license
   final List<String> tags; // Categorization
 
   HistoricalFigure({
@@ -28,6 +30,8 @@ class HistoricalFigure {
     required this.majorAchievements,
     required this.influences,
     this.portraitUrl,
+    this.portraitCredit,
+    this.portraitCreditUrl,
     required this.tags,
   });
 
@@ -48,6 +52,10 @@ class HistoricalFigure {
       ),
       influences: List<String>.from(json['influences'] as List<dynamic>? ?? []),
       portraitUrl: (json['portrait_url'] ?? json['portraitUrl']) as String?,
+      portraitCredit:
+          (json['portrait_credit'] ?? json['portraitCredit']) as String?,
+      portraitCreditUrl:
+          (json['portrait_credit_url'] ?? json['portraitCreditUrl']) as String?,
       tags: List<String>.from(json['tags'] as List<dynamic>? ?? []),
     );
   }
@@ -65,6 +73,8 @@ class HistoricalFigure {
       'major_achievements': majorAchievements,
       'influences': influences,
       'portrait_url': portraitUrl,
+      'portrait_credit': portraitCredit,
+      'portrait_credit_url': portraitCreditUrl,
       'tags': tags,
     };
   }
@@ -143,6 +153,8 @@ class HistoricalEvent {
   final List<String> keyFigures; // Important people involved
   final List<String> significance; // Why this event matters
   final String? imageUrl; // Optional image URL
+  final String? imageCredit; // Image credit/citation text
+  final String? imageCreditUrl; // Optional link to source/license
   final String? mapUrl; // Optional map visualization URL
   final List<String> tags; // Tags for categorization
   final List<String> sources; // Academic sources and citations
@@ -157,6 +169,8 @@ class HistoricalEvent {
     required this.keyFigures,
     required this.significance,
     this.imageUrl,
+    this.imageCredit,
+    this.imageCreditUrl,
     this.mapUrl,
     required this.tags,
     required this.sources,
@@ -177,6 +191,10 @@ class HistoricalEvent {
         json['significance'] as List<dynamic>? ?? [],
       ),
       imageUrl: (json['image_url'] ?? json['imageUrl']) as String?,
+      imageCredit:
+          (json['image_credit'] ?? json['imageCredit']) as String?,
+      imageCreditUrl:
+          (json['image_credit_url'] ?? json['imageCreditUrl']) as String?,
       mapUrl: (json['map_url'] ?? json['mapUrl']) as String?,
       tags: List<String>.from(json['tags'] as List<dynamic>? ?? []),
       sources: List<String>.from(json['sources'] as List<dynamic>? ?? []),
@@ -194,6 +212,8 @@ class HistoricalEvent {
       'key_figures': keyFigures,
       'significance': significance,
       'image_url': imageUrl,
+      'image_credit': imageCredit,
+      'image_credit_url': imageCreditUrl,
       'map_url': mapUrl,
       'tags': tags,
       'sources': sources,

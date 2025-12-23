@@ -40,17 +40,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                 children: [
                   if (widget.event.imageUrl != null &&
                       widget.event.imageUrl!.isNotEmpty)
-                    Image.asset(
-                      widget.event.imageUrl!,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) => Center(
-                        child: Icon(
-                          Icons.image_not_supported,
-                          size: 80,
-                          color: Colors.grey[400],
-                        ),
-                      ),
-                    )
+                    _buildHeroImage(widget.event.imageUrl!)
                   else
                     Center(
                       child: Icon(
@@ -75,26 +65,44 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                           ],
                         ),
                       ),
-                      child: Row(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 6,
-                            ),
-                            decoration: BoxDecoration(
-                              color: widget.eraColor,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Text(
-                              widget.event.year,
+                          Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 6,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: widget.eraColor,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Text(
+                                  widget.event.year,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          if (widget.event.imageCredit != null &&
+                              widget.event.imageCredit!.isNotEmpty) ...[
+                            const SizedBox(height: 8),
+                            Text(
+                              'Image: ${widget.event.imageCredit}',
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
-                                fontWeight: FontWeight.bold,
                                 color: Colors.white,
-                                fontSize: 13,
+                                fontSize: 12,
                               ),
                             ),
-                          ),
+                          ],
                         ],
                       ),
                     ),
@@ -379,5 +387,34 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         ),
       ),
     );
+  }
+
+  Widget _buildHeroImage(String url) {
+    final isNetwork = Uri.tryParse(url)?.hasScheme == true &&
+        (url.startsWith('http://') || url.startsWith('https://'));
+    final imageWidget = isNetwork
+        ? Image.network(
+            url,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) => Center(
+              child: Icon(
+                Icons.image_not_supported,
+                size: 80,
+                color: Colors.grey[400],
+              ),
+            ),
+          )
+        : Image.asset(
+            url,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) => Center(
+              child: Icon(
+                Icons.image_not_supported,
+                size: 80,
+                color: Colors.grey[400],
+              ),
+            ),
+          );
+    return imageWidget;
   }
 }

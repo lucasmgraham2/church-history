@@ -234,6 +234,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       // Username field with parchment style
                       TextFormField(
                         controller: _usernameController,
+                        autofillHints: const [AutofillHints.username],
                         style: const TextStyle(
                           color: Color(0xFF2C1810),
                           fontSize: 16,
@@ -284,6 +285,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       // Password field with parchment style
                       TextFormField(
                         controller: _passwordController,
+                        autofillHints: const [AutofillHints.password],
                         obscureText: _obscurePassword,
                         style: const TextStyle(
                           color: Color(0xFF2C1810),

@@ -12,12 +12,23 @@ Church History Explorer provides an accessible platform for students, researcher
 - **AI-Powered Insights**: Get intelligent context and explanations about historical events
 - **Multi-Era Exploration**: Navigate seamlessly through different periods of church history
 
-## Quick Setup
+## Local Setup Guide
 
-### 1. Database Setup
+### Prerequisites
+
+Before starting, ensure you have:
+- **Python 3.7+** with pip
+- **Flutter SDK** (for mobile development)
+- **PostgreSQL 14+** (will be installed in Step 1)
+- **Ollama** with gemma3:1b model (for AI service)
+
+### Step 1: PostgreSQL Database Setup
+
+PostgreSQL is required for storing user data and historical content.
 
 **Windows:**
-```bash
+```powershell
+# Run the setup script
 setup_windows_postgres.bat
 ```
 
@@ -32,35 +43,120 @@ chmod +x setup_macos_postgres.sh
 - Authentication system for user accounts
 - Connection pool for reliable data access
 
-### 2. Start Services
+### Step 2: Ollama Model Setup
+
+The LLM Service requires Ollama and the gemma3:1b model for church history AI insights.
+
+**Step 2a: Install Ollama**
+
+1. Download Ollama from [https://ollama.ai](https://ollama.ai)
+2. Install it following the platform-specific instructions
+
+**Step 2b: Download the gemma3:1b Model**
+
+Open a terminal and run:
+```bash
+ollama pull gemma3:1b
+```
+
+This will download the gemma3:1b model (~2GB). The model will be stored locally and used by the LLM Service.
+
+**Verify the model is installed:**
+```bash
+ollama list
+```
+
+You should see `gemma3:1b` in the output.
+
+### Step 3: Install Python Dependencies
+
+Install required Python packages for each service:
+
+```bash
+# Storage Service dependencies
+cd storage_service
+pip install -r requirements.txt
+cd ..
+
+# API Gateway dependencies
+cd api_gateway
+pip install -r requirements.txt
+cd ..
+
+# LLM Service dependencies
+cd llm_service
+pip install -r requirements.txt
+cd ..
+```
+
+### Step 4: Start All Services
+
+**Option A: Automated Startup Script (Recommended)**
+
+Windows PowerShell:
+```powershell
+./start-all.ps1
+```
+
+This script will:
+1. Start the API Gateway (Port 8000)
+2. Start the LLM Service (Port 8001)
+3. Start the Storage Service (Port 8002)
+4. Wait for services to initialize
+5. Launch the Flutter app in Chrome
+
+**Option B: Manual Startup (Multiple Terminals)**
+
+If you prefer to run services individually, open separate terminals for each:
+
 ```bash
 # Terminal 1 - Storage Service (Port 8002)
-python storage_service/main_simple.py
+cd storage_service
+python main_simple.py
 
-# Terminal 2 - API Gateway (Port 8000)  
-python api_gateway/main_simple.py
+# Terminal 2 - API Gateway (Port 8000)
+cd api_gateway
+python main_simple.py
 
-# Terminal 3 - Flutter App
+# Terminal 3 - LLM Service (Port 8001)
+cd llm_service
+python main_simple.py
+
+# Terminal 4 - Flutter Frontend
 cd flutter_frontend
-flutter run
-
-# Terminal 4 - LLM Service
-python llm_service/main_simple.py
+flutter pub get
+flutter run -d chrome
+# Or for Windows: flutter run -d windows
 ```
+
+### Step 5: Create an Account and Start Exploring
+
+1. Open the app
+2. Click "Don't have an account? Register"
+3. Enter username, email, and password
+4. Log in with your credentials
+5. Explore church history and use the AI assistant!
 
 ## Architecture
 
-- **Storage Service**: User authentication and historical data management (PostgreSQL)
-- **API Gateway**: API orchestration, token management, and request routing
-- **LLM Service**: AI-powered service for generating historical insights and context
-- **Flutter Frontend**: Cross-platform mobile application for church history exploration
+The application uses a microservices architecture with the following components:
 
-### Features
+- **Storage Service** (Port 8002): User authentication and historical data management using PostgreSQL
+- **API Gateway** (Port 8000): API orchestration, token management, and request routing
+- **LLM Service** (Port 8001): AI-powered service for generating historical insights using Ollama's gemma3:1b model
+- **Flutter Frontend**: Cross-platform mobile/web application for church history exploration
 
-- **Church History Database**: Comprehensive data on historical eras, events, and figures
-- **Historical Content**: Curated images and detailed descriptions of important periods
-- **AI Insights**: Intelligent explanations and context about historical developments
-- **User Authentication**: Secure account system for personalized exploration experience
+### Service Dependencies
+
+```
+Flutter App
+    ↓
+API Gateway (Port 8000)
+    ↙       ↓       ↘
+Storage  LLM      
+Svc      Svc
+(8002)   (8001)
+```
 
 ## API Endpoints
 
@@ -70,32 +166,30 @@ python llm_service/main_simple.py
 - `POST /auth/logout` - User logout
 - Historical data endpoints for retrieving era information, events, and images
 
-## Requirements
-
-- **Python 3.7+** with pip
-- **PostgreSQL 14+** (auto-installed by setup scripts)
-- **Flutter SDK** for mobile development
-
-## Content
-
-The application will include historical data covering various church history eras:
-- Early Christian Church
-- The Imperial Church
-- Medieval Christianity 
-- Reformation Era
-- Modern Christianity
-
 ## Troubleshooting
 
-**Database Connection Issues:**
+### Database Connection Issues
 - Ensure PostgreSQL service is running
 - Verify database credentials are correct
+- Check that the database was properly created during setup
 
-**Port Conflicts:**
+### Port Conflicts
 - Storage Service: Port 8002
 - API Gateway: Port 8000
 - LLM Service: Port 8001
-- Make sure these ports are available
+- Make sure these ports are available and not used by other applications
+
+### Ollama/LLM Service Issues
+- Ensure Ollama is running in the background
+- Verify the gemma3:1b model is installed: `ollama list`
+- If the model isn't installed, download it: `ollama pull gemma3:1b`
+- Check that the LLM Service can connect to Ollama on its default port (11434)
+
+### Service Startup Issues
+- Ensure Python 3.7+ is installed
+- Verify all dependencies are installed with `pip install -r requirements.txt` in each service directory
+- Run services individually to see error messages if the startup script fails
+- Check that PostgreSQL is fully started before running storage_service
 
 ## Development
 

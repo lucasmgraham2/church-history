@@ -22,6 +22,6 @@ Start-Sleep -Seconds 5
 # Start Flutter Frontend
 Write-Host "`nStarting Flutter Frontend..." -ForegroundColor Cyan
 Set-Location "$PSScriptRoot\flutter_frontend"
-flutter run
+flutter run -d chrome
 
 Write-Host "`nAll services started!" -ForegroundColor Green

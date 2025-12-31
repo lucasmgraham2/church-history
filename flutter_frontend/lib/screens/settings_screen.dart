@@ -65,10 +65,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
       String? subtitle,
     }) {
       return ListTile(
-        leading: Icon(icon, color: Theme.of(context).primaryColor),
+        leading: Icon(icon, color: Theme.of(context).colorScheme.primary),
         title: Text(title),
         subtitle: subtitle != null ? Text(subtitle) : null,
-        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+        trailing: const Icon(Icons.chevron_right, size: 20),
         onTap: onTap,
       );
     }
@@ -80,45 +80,74 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       // Show loading indicator while settings are loaded
       body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Text('Loading...'),
+                ],
+              ),
+            )
           : ListView(
               children: [
-                // Profile Section
-                const Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Text('Account', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                const SizedBox(height: 16),
+                // Account Section
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  child: Text(
+                    'Account',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 buildSettingsTile(
                   title: 'Change Password',
                   icon: Icons.lock_outline,
-                  onTap: _showComingSoon, // Mock implementation
+                  onTap: _showComingSoon,
                 ),
                 const Divider(),
 
                 // Preferences Section
-                const Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Text('Preferences', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  child: Text(
+                    'Preferences',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 SwitchListTile(
-                  secondary: Icon(Icons.notifications_outlined, color: Theme.of(context).primaryColor),
+                  secondary: Icon(
+                    Icons.notifications_outlined,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                   title: const Text('Enable Notifications'),
                   value: _notificationsEnabled,
                   onChanged: (bool value) async {
-                    // Save the new setting and update the UI
                     await _settingsService.setNotificationsEnabled(value);
                     setState(() {
                       _notificationsEnabled = value;
                     });
+                    if (!mounted) return;
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Notifications ${value ? "enabled" : "disabled"}')),
+                      SnackBar(
+                        content: Text('Notifications ${value ? "enabled" : "disabled"}'),
+                      ),
                     );
                   },
                 ),
                 buildSettingsTile(
                   title: 'Appearance',
                   subtitle: _themeModeName,
-                  icon: Icons.color_lens_outlined,
+                  icon: Icons.palette_outlined,
                   onTap: () {
                     // Show a dialog to change the theme
                     showDialog(
@@ -136,6 +165,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 if (value != null) {
                                   await _settingsService.setThemeMode(value);
                                   setState(() => _themeMode = value);
+                                  if (!mounted) return;
                                   Navigator.of(context).pop();
                                 }
                               },
@@ -148,11 +178,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 if (value != null) {
                                   await _settingsService.setThemeMode(value);
                                   setState(() => _themeMode = value);
+                                  if (!mounted) return;
                                   Navigator.of(context).pop();
                                 }
                               },
                             ),
-                             RadioListTile<ThemeMode>(
+                            RadioListTile<ThemeMode>(
                               title: const Text('System Default'),
                               value: ThemeMode.system,
                               groupValue: _themeMode,
@@ -160,6 +191,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 if (value != null) {
                                   await _settingsService.setThemeMode(value);
                                   setState(() => _themeMode = value);
+                                  if (!mounted) return;
                                   Navigator.of(context).pop();
                                 }
                               },
@@ -172,10 +204,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 const Divider(),
 
-                // About Section and Logout Button ... (keep this part the same)
-                 const Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Text('About', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                // About Section
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  child: Text(
+                    'About',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 buildSettingsTile(
                   title: 'About Church History Explorer',
@@ -190,21 +227,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   },
                 ),
                 const Divider(),
+                
+                // Logout Button
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      foregroundColor: Colors.red,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                    ),
+                  child: ElevatedButton.icon(
                     onPressed: () async {
                       await AuthService().logout();
+                      if (!mounted) return;
                       Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(builder: (context) => const LoginScreen()),
                         (Route<dynamic> route) => false,
                       );
                     },
-                    child: const Text('Logout', style: TextStyle(fontSize: 16)),
+                    icon: const Icon(Icons.logout),
+                    label: const Text('Logout'),
                   ),
                 ),
               ],

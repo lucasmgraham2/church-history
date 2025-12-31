@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class EraQuizQuestion {
   final String id;
@@ -140,15 +141,26 @@ class _EraQuizScreenState extends State<EraQuizScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('${widget.eraTitle} Quiz'),
+    return KeyboardListener(
+      focusNode: FocusNode()..requestFocus(),
+      autofocus: true,
+      onKeyEvent: (event) {
+        if (event is KeyDownEvent && event.logicalKey.keyLabel == 'Enter') {
+          if (!_showResults && _answers[_currentIndex] != null) {
+            _next();
+          }
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('${widget.eraTitle} Quiz'),
+        ),
+        body: _quizQuestions.isEmpty
+            ? const Center(child: CircularProgressIndicator())
+            : _showResults
+                ? _buildResultsView()
+                : _buildQuestionView(),
       ),
-      body: _quizQuestions.isEmpty
-          ? const Center(child: CircularProgressIndicator())
-          : _showResults
-              ? _buildResultsView()
-              : _buildQuestionView(),
     );
   }
 

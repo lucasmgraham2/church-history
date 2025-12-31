@@ -2,23 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:church_history_explorer/models/church_history_models.dart';
 import 'package:church_history_explorer/screens/ai_assistant_screen.dart';
 
-class EventDetailScreen extends StatefulWidget {
-  final HistoricalEvent event;
+class PeopleDetailScreen extends StatefulWidget {
+  final HistoricalFigure figure;
   final Color eraColor;
 
-  const EventDetailScreen({
+  const PeopleDetailScreen({
     super.key,
-    required this.event,
+    required this.figure,
     required this.eraColor,
   });
 
   @override
-  State<EventDetailScreen> createState() => _EventDetailScreenState();
+  State<PeopleDetailScreen> createState() => _PeopleDetailScreenState();
 }
 
-class _EventDetailScreenState extends State<EventDetailScreen> {
-  bool _isBookmarked = false;
-
+class _PeopleDetailScreenState extends State<PeopleDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +25,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Text(widget.event.title),
+        title: Text(widget.figure.name),
         backgroundColor: widget.eraColor,
         foregroundColor: Colors.white,
       ),
@@ -35,25 +33,105 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Hero image/portrait
+            SizedBox(
+              height: 240,
+              width: double.infinity,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  if (widget.figure.portraitUrl != null &&
+                      widget.figure.portraitUrl!.isNotEmpty)
+                    _buildHeroImage(widget.figure.portraitUrl!)
+                  else
+                    Center(
+                      child: Icon(
+                        Icons.person,
+                        size: 100,
+                        color: widget.eraColor.withOpacity(0.3),
+                      ),
+                    ),
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.transparent,
+                            Colors.black.withOpacity(0.5),
+                          ],
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 6,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: widget.eraColor,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Text(
+                                  '${widget.figure.birthYear} – ${widget.figure.deathYear}',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          if (widget.figure.portraitCredit != null &&
+                              widget.figure.portraitCredit!.isNotEmpty) ...[
+                            const SizedBox(height: 8),
+                            Text(
+                              'Portrait: ${widget.figure.portraitCredit}',
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
             // Body content
             Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Location
-                  if (widget.event.location.isNotEmpty)
+                  // Role
+                  if (widget.figure.role.isNotEmpty)
                     Row(
                       children: [
                         Icon(
-                          Icons.location_on,
+                          Icons.badge,
                           color: widget.eraColor,
                           size: 24,
                         ),
                         const SizedBox(width: 12),
                         Expanded(
                           child: Text(
-                            widget.event.location,
+                            widget.figure.role,
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -64,10 +142,10 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                     ),
                   const SizedBox(height: 24),
 
-                  // Overview
-                  if (widget.event.description.isNotEmpty) ...[
+                  // Biography
+                  if (widget.figure.biography.isNotEmpty) ...[
                     Text(
-                      'Overview',
+                      'Biography',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -76,7 +154,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      widget.event.description,
+                      widget.figure.biography,
                       style: TextStyle(
                         fontSize: 15,
                         color: Colors.grey[800],
@@ -86,10 +164,10 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                     const SizedBox(height: 24),
                   ],
 
-                  // Full details + citations
-                  if (widget.event.details.isNotEmpty) ...[
+                  // Significance
+                  if (widget.figure.significance.isNotEmpty) ...[
                     Text(
-                      'Full Details',
+                      'Significance & Impact',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -107,7 +185,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                         ),
                       ),
                       child: Text(
-                        widget.event.details,
+                        widget.figure.significance,
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey[800],
@@ -118,10 +196,10 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                     const SizedBox(height: 24),
                   ],
 
-                  // Key figures
-                  if (widget.event.keyFigures.isNotEmpty) ...[
+                  // Major Achievements
+                  if (widget.figure.majorAchievements.isNotEmpty) ...[
                     Text(
-                      'Key Figures',
+                      'Major Achievements',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -129,8 +207,8 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    ...widget.event.keyFigures.map(
-                      (figure) => Padding(
+                    ...widget.figure.majorAchievements.map(
+                      (achievement) => Padding(
                         padding: const EdgeInsets.only(bottom: 10),
                         child: Container(
                           padding: const EdgeInsets.all(12),
@@ -147,14 +225,14 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                           child: Row(
                             children: [
                               Icon(
-                                Icons.person,
+                                Icons.check_circle,
                                 color: widget.eraColor,
                                 size: 20,
                               ),
                               const SizedBox(width: 12),
                               Expanded(
                                 child: Text(
-                                  figure,
+                                  achievement,
                                   style: const TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
@@ -169,10 +247,10 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                     const SizedBox(height: 24),
                   ],
 
-                  // Significance
-                  if (widget.event.significance.isNotEmpty) ...[
+                  // Influences
+                  if (widget.figure.influences.isNotEmpty) ...[
                     Text(
-                      'Significance & Impact',
+                      'Influences',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -180,55 +258,29 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    ...widget.event.significance.asMap().entries.map(
-                      (entry) => Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 28,
-                              height: 28,
-                              decoration: BoxDecoration(
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: widget.figure.influences
+                          .map(
+                            (influence) => Chip(
+                              label: Text(influence),
+                              backgroundColor: widget.eraColor.withOpacity(0.2),
+                              labelStyle: TextStyle(
                                 color: widget.eraColor,
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  '${entry.key + 1}',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12,
-                                  ),
-                                ),
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
-                            const SizedBox(width: 12),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 4),
-                                child: Text(
-                                  entry.value,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.grey[800],
-                                    height: 1.6,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                          )
+                          .toList(),
                     ),
                     const SizedBox(height: 24),
                   ],
 
-                  // Sources
-                  if (widget.event.sources.isNotEmpty) ...[
+                  // Tags
+                  if (widget.figure.tags.isNotEmpty) ...[
                     Text(
-                      'Sources & Citations',
+                      'Tags',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -236,44 +288,21 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    ...widget.event.sources.map(
-                      (source) => Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: Container(
-                          padding: const EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                            color: widget.eraColor.withOpacity(0.08),
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border(
-                              left: BorderSide(
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: widget.figure.tags
+                          .map(
+                            (tag) => Chip(
+                              label: Text(tag),
+                              backgroundColor: widget.eraColor.withOpacity(0.15),
+                              labelStyle: TextStyle(
                                 color: widget.eraColor,
-                                width: 3,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
-                          ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Icon(
-                                Icons.source,
-                                color: widget.eraColor,
-                                size: 18,
-                              ),
-                              const SizedBox(width: 12),
-                              Expanded(
-                                child: Text(
-                                  source,
-                                  style: TextStyle(
-                                    fontSize: 13,
-                                    color: Colors.grey[700],
-                                    height: 1.5,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                          )
+                          .toList(),
                     ),
                     const SizedBox(height: 24),
                   ],
@@ -287,13 +316,13 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) => AiAssistantScreen(
-                              initialContext: widget.event.title,
+                              initialContext: widget.figure.name,
                             ),
                           ),
                         );
                       },
-                      icon: const Icon(Icons.smart_toy, color: Colors.white),
-                      label: const Text('Ask AI', style: TextStyle(color: Colors.white)),
+                      icon: const Icon(Icons.smart_toy),
+                      label: const Text('Ask AI About This Person'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: widget.eraColor,
                         foregroundColor: Colors.white,
@@ -311,5 +340,34 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         ),
       ),
     );
+  }
+
+  Widget _buildHeroImage(String url) {
+    final isNetwork = Uri.tryParse(url)?.hasScheme == true &&
+        (url.startsWith('http://') || url.startsWith('https://'));
+    final imageWidget = isNetwork
+        ? Image.network(
+            url,
+            fit: BoxFit.contain,
+            errorBuilder: (context, error, stackTrace) => Center(
+              child: Icon(
+                Icons.image_not_supported,
+                size: 80,
+                color: Colors.grey[400],
+              ),
+            ),
+          )
+        : Image.asset(
+            url,
+            fit: BoxFit.contain,
+            errorBuilder: (context, error, stackTrace) => Center(
+              child: Icon(
+                Icons.image_not_supported,
+                size: 80,
+                color: Colors.grey[400],
+              ),
+            ),
+          );
+    return imageWidget;
   }
 }

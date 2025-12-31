@@ -74,13 +74,20 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Church History Explorer'),
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.auto_stories, size: 24),
+            SizedBox(width: 12),
+            Text('Church History'),
+          ],
+        ),
         centerTitle: true,
         automaticallyImplyLeading: false,
-        elevation: 2,
         actions: [
           IconButton(
-            icon: const Icon(Icons.settings),
+            icon: const Icon(Icons.settings_outlined),
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => const SettingsScreen()),
@@ -96,26 +103,48 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    'Loading...',
+                    style: TextStyle(
+                      color: Theme.of(context).textTheme.bodyMedium?.color,
+                    ),
+                  ),
+                ],
+              ),
+            )
           : Column(
               children: [
-                // Search bar
-                Padding(
+                // Modern search bar
+                Container(
                   padding: const EdgeInsets.all(16.0),
                   child: TextField(
                     onChanged: (value) {
                       setState(() => _searchQuery = value);
                     },
                     decoration: InputDecoration(
-                      hintText: 'Search church history...',
-                      prefixIcon: const Icon(Icons.search),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                      hintText: 'Search eras...',
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 12,
-                      ),
+                      suffixIcon: _searchQuery.isNotEmpty
+                          ? IconButton(
+                              icon: const Icon(Icons.clear),
+                              onPressed: () {
+                                setState(() => _searchQuery = '');
+                              },
+                            )
+                          : null,
                     ),
                   ),
                 ),
@@ -127,18 +156,18 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
-                                Icons.history,
-                                size: 80,
-                                color: Colors.grey[400],
+                                Icons.search_off,
+                                size: 64,
+                                color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
                               ),
                               const SizedBox(height: 16),
                               Text(
                                 _searchQuery.isEmpty
-                                    ? 'No history data available'
-                                    : 'No results found',
+                                    ? 'No records found'
+                                    : 'No matching records',
                                 style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.grey[600],
+                                  fontSize: 16,
+                                  color: Theme.of(context).textTheme.bodyMedium?.color,
                                 ),
                               ),
                             ],
@@ -164,15 +193,33 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           );
         },
-        label: const Text('Ask AI'),
-        icon: const Icon(Icons.smart_toy),
-        tooltip: 'Ask the Church History AI Assistant',
+        backgroundColor: const Color(0xFF6366F1),
+        foregroundColor: Colors.white,
+        label: const Text('Ask AI', style: TextStyle(color: Colors.white)),
+        icon: const Icon(Icons.smart_toy, color: Colors.white),
       ),
     );
   }
 
   Widget _buildEraCard(BuildContext context, ChurchHistoryEra era) {
     final eraColor = _hexToColor(era.color);
+    
+    // Map icon names to IconData
+    IconData getIconForEra(String iconName) {
+      switch (iconName) {
+        case 'local_fire_department':
+          return Icons.local_fire_department;
+        case 'account_balance':
+          return Icons.account_balance;
+        case 'menu_book':
+          return Icons.menu_book;
+        case 'gavel':
+          return Icons.gavel;
+        default:
+          return Icons.auto_stories;
+      }
+    }
+    
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
@@ -182,115 +229,100 @@ class _HomeScreenState extends State<HomeScreen> {
         );
       },
       child: Card(
-        margin: const EdgeInsets.symmetric(vertical: 12),
-        elevation: 4,
+        margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                eraColor.withOpacity(0.2),
-                eraColor.withOpacity(0.05),
-              ],
-            ),
-            border: Border.all(
-              color: eraColor.withOpacity(0.3),
-              width: 2,
-            ),
+          side: BorderSide(
+            color: eraColor,
+            width: 2,
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Title and year range
-                Row(
-                  children: [
-                    Icon(
-                      Icons.church,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: eraColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Icon(
+                      getIconForEra(era.icon),
                       color: eraColor,
                       size: 28,
                     ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            era.title,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 2),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.calendar_today,
-                                size: 12,
-                                color: eraColor,
-                              ),
-                              const SizedBox(width: 4),
-                              Text(
-                                '${era.startYear} - ${era.endYear}',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: eraColor,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      color: eraColor,
-                      size: 20,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                // Description
-                Text(
-                  era.description,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey[700],
-                    height: 1.5,
                   ),
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 12),
-                // Event count
-                Row(
-                  children: [
-                    Icon(
-                      Icons.event,
-                      size: 18,
-                      color: eraColor,
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          era.title,
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          '${era.startYear} - ${era.endYear}',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Theme.of(context).textTheme.bodyMedium?.color,
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: 8),
-                    Text(
-                      '${era.events.length} events',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: eraColor,
-                        fontWeight: FontWeight.w600,
-                      ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Theme.of(context).colorScheme.primary,
+                    size: 16,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              Text(
+                era.description,
+                style: Theme.of(context).textTheme.bodyMedium,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  Icon(
+                    Icons.event_note,
+                    size: 16,
+                    color: Theme.of(context).textTheme.bodyMedium?.color,
+                  ),
+                  const SizedBox(width: 6),
+                  Text(
+                    '${era.events.length} events',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Theme.of(context).textTheme.bodyMedium?.color,
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                  const SizedBox(width: 16),
+                  Icon(
+                    Icons.people,
+                    size: 16,
+                    color: Theme.of(context).textTheme.bodyMedium?.color,
+                  ),
+                  const SizedBox(width: 6),
+                  Text(
+                    '${era.figures.length} figures',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Theme.of(context).textTheme.bodyMedium?.color,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

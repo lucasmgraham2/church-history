@@ -52,6 +52,8 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
 
   @override
   void dispose() {
+    // Clear conversation history when chat is closed
+    _aiService.clearHistory();
     _textController.dispose();
     _scrollController.dispose();
     _textFocusNode.dispose();
@@ -110,9 +112,8 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Church History AI Assistant'),
+        title: const Text('AI Assistant'),
         centerTitle: true,
-        elevation: 2,
       ),
       body: Column(
         children: [
@@ -125,30 +126,65 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.smart_toy,
-                            size: 80,
-                            color: Colors.grey[400],
+                          Container(
+                            padding: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFD4AF37).withOpacity(0.1),
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: const Color(0xFFD4AF37),
+                                width: 2,
+                              ),
+                            ),
+                            child: const Icon(
+                              Icons.smart_toy,
+                              size: 60,
+                              color: Color(0xFF6B5344),
+                            ),
                           ),
-                          const SizedBox(height: 16),
-                          Text(
-                            'Welcome to Church History Assistant!',
+                          const SizedBox(height: 24),
+                          const Text(
+                            'Meet Your AI Guide',
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
-                              color: Colors.grey[700],
+                              color: Color(0xFF2C1810),
+                              letterSpacing: 0.5,
                             ),
                             textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 12),
                           Text(
-                            'Ask me anything about church history, historical events, key figures, or theological concepts. I\'m here to help you learn!',
+                            'Ask about church history, historical events, key figures, theological concepts, and pivotal moments in Christian tradition. This AI is trained to help you explore and understand these topics.',
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.grey[600],
+                              color: Colors.grey[700],
                               height: 1.6,
+                              fontStyle: FontStyle.italic,
                             ),
                             textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 20),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFFFFAF0),
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: const Color(0xFFD4AF37).withOpacity(0.3),
+                              ),
+                            ),
+                            child: const Text(
+                              'Ask your questions below...',
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: Color(0xFF6B5344),
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -166,17 +202,27 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
           ),
           // "Typing" indicator
           if (_isTyping)
-            const Padding(
-              padding: EdgeInsets.all(8.0),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  SizedBox(
-                    width: 24,
-                    height: 24,
-                    child: CircularProgressIndicator(strokeWidth: 2),
+                  const SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFD4AF37)),
+                    ),
                   ),
-                  SizedBox(width: 8),
-                  Text('Church History AI is typing...'),
+                  const SizedBox(width: 10),
+                  Text(
+                    'AI is thinking...',
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                      fontStyle: FontStyle.italic,
+                      fontSize: 13,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -191,9 +237,9 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
     final align =
         message.isUser ? CrossAxisAlignment.end : CrossAxisAlignment.start;
     final color = message.isUser
-        ? Theme.of(context).primaryColor.withOpacity(0.8)
-        : Colors.grey[200];
-    final textColor = message.isUser ? Colors.white : Colors.black87;
+        ? const Color(0xFF6B5344)
+        : const Color(0xFFFFFAF0);
+    final textColor = message.isUser ? const Color(0xFFFFFAF0) : const Color(0xFF2C1810);
 
     return Column(
       crossAxisAlignment: align,
@@ -203,29 +249,47 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
             maxWidth: MediaQuery.of(context).size.width * 0.75,
           ),
           margin: const EdgeInsets.symmetric(vertical: 4),
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: message.isUser 
+                ? const Color(0xFFD4AF37).withOpacity(0.3)
+                : const Color(0xFFD4AF37).withOpacity(0.5),
+              width: 1.5,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                blurRadius: 4,
+                offset: const Offset(0, 2),
+              ),
+            ],
           ),
           child: message.isUser
               ? Text(
                   message.text,
-                  style: TextStyle(color: textColor, fontSize: 16),
+                  style: TextStyle(color: textColor, fontSize: 15, height: 1.4),
                 )
               : (message.isMarkdown
                   ? MarkdownBody(
                       data: message.text,
                       styleSheet: MarkdownStyleSheet(
-                        p: TextStyle(color: textColor, fontSize: 16),
+                        p: TextStyle(color: textColor, fontSize: 15, height: 1.5),
                         h1: TextStyle(color: textColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        h2: TextStyle(color: textColor, fontSize: 18, fontWeight: FontWeight.bold),
+                        h3: TextStyle(color: textColor, fontSize: 16, fontWeight: FontWeight.bold),
+                        strong: const TextStyle(color: Color(0xFF4A3C2E), fontWeight: FontWeight.bold),
+                        em: TextStyle(color: textColor, fontStyle: FontStyle.italic),
                       ),
                     )
                   : Text(
                       message.text,
-                      style: TextStyle(color: textColor, fontSize: 16),
+                      style: TextStyle(color: textColor, fontSize: 15, height: 1.4),
                     )),
         ),
+        const SizedBox(height: 8),
       ],
     );
   }
@@ -233,10 +297,23 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
   Widget _buildTextInputArea() {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
+        gradient: const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xFFE8DCC4),
+            Color(0xFFF4EAD5),
+          ],
+        ),
+        border: Border(
+          top: BorderSide(
+            color: const Color(0xFFD4AF37).withOpacity(0.3),
+            width: 2,
+          ),
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withOpacity(0.1),
             blurRadius: 10,
             offset: const Offset(0, -5),
           ),
@@ -245,8 +322,8 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
       padding: EdgeInsets.only(
         left: 16,
         right: 8,
-        top: 8,
-        bottom: 8 + MediaQuery.of(context).padding.bottom,
+        top: 12,
+        bottom: 12 + MediaQuery.of(context).padding.bottom,
       ),
       child: Row(
         children: [
@@ -277,22 +354,53 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
                 }
                 return KeyEventResult.ignored;
               },
-              child: TextField(
-                controller: _textController,
-                decoration: const InputDecoration(
-                  hintText: 'Ask about church history, events, figures, theology...',
-                  border: InputBorder.none,
-                  filled: false,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFFFAF0),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: const Color(0xFFD4AF37).withOpacity(0.3),
+                    width: 1.5,
+                  ),
                 ),
-                minLines: 1,
-                maxLines: 5,
-                textInputAction: TextInputAction.newline,
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                child: TextField(
+                  controller: _textController,
+                  style: const TextStyle(
+                    color: Color(0xFF2C1810),
+                    fontSize: 15,
+                  ),
+                  decoration: InputDecoration(
+                    hintText: 'Pose your inquiry to the scholar...',
+                    hintStyle: TextStyle(
+                      color: Colors.grey[600],
+                      fontStyle: FontStyle.italic,
+                      fontSize: 14,
+                    ),
+                    border: InputBorder.none,
+                    filled: false,
+                  ),
+                  minLines: 1,
+                  maxLines: 5,
+                  textInputAction: TextInputAction.newline,
+                ),
               ),
             ),
           ),
-          IconButton(
-            icon: Icon(Icons.send, color: Theme.of(context).primaryColor),
-            onPressed: _sendMessage,
+          const SizedBox(width: 8),
+          Container(
+            decoration: BoxDecoration(
+              color: const Color(0xFF2C1810),
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: const Color(0xFFD4AF37),
+                width: 2,
+              ),
+            ),
+            child: IconButton(
+              icon: const Icon(Icons.send, color: Color(0xFFD4AF37)),
+              onPressed: _sendMessage,
+            ),
           ),
         ],
       ),

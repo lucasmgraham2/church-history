@@ -4,14 +4,38 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AiService {
   static const String baseUrl = 'http://localhost:8000';
+  
+  // Session-based conversation history (cleared when service is disposed)
+  final List<Map<String, String>> _conversationHistory = [];
 
-  /// Send a message to the AI assistant
+  /// Add a message to the conversation history
+  void addToHistory(String message, bool isUser) {
+    _conversationHistory.add({
+      'role': isUser ? 'user' : 'assistant',
+      'content': message,
+    });
+  }
+
+  /// Clear the conversation history (called when chat screen is closed)
+  void clearHistory() {
+    _conversationHistory.clear();
+  }
+
+  /// Get the full conversation history
+  List<Map<String, String>> getHistory() {
+    return List.from(_conversationHistory);
+  }
+
+  /// Send a message to the AI assistant with full conversation context
   /// Patient ID will be automatically linked to user credentials in the future
   Future<Map<String, dynamic>> sendMessage({
     required String message,
     String? patientId, // Reserved for future profile integration
   }) async {
     try {
+      // Add user message to conversation history
+      addToHistory(message, true);
+      
       // Get auth token
       final prefs = await SharedPreferences.getInstance();
       final token = prefs.getString('auth_token');
@@ -23,7 +47,7 @@ class AiService {
         };
       }
 
-      // Prepare request (patient_id null for now, will auto-link to user later)
+      // Prepare request with full conversation history
       final response = await http.post(
         Uri.parse('$baseUrl/chat'),
         headers: {
@@ -33,6 +57,7 @@ class AiService {
         body: jsonEncode({
           'message': message,
           'patient_id': patientId, // Currently null, reserved for future use
+          'conversation_history': _conversationHistory, // Send full history
         }),
       );
 
@@ -42,6 +67,9 @@ class AiService {
         // Keep backward compatibility with older keys like `final_response` and `final_response_readme`.
         final markdown = data['response_markdown'] ?? data['final_response_readme'] ?? data['final_response_markdown'] ?? data['response'];
         final plain = data['response_text'] ?? data['final_response'] ?? data['response'] ?? '';
+
+        // Add assistant response to conversation history
+        addToHistory(plain, false);
 
         return {
           'success': true,

@@ -7,6 +7,8 @@ import 'package:church_history_explorer/models/church_history_models.dart';
 import 'package:church_history_explorer/screens/ai_assistant_screen.dart';
 import 'package:church_history_explorer/screens/era_quiz_screen.dart';
 import 'package:church_history_explorer/screens/event_detail_screen.dart';
+import 'package:church_history_explorer/screens/people_detail_screen.dart';
+import 'package:church_history_explorer/screens/timeline_widget.dart';
 
 class EraDetailScreen extends StatefulWidget {
   final ChurchHistoryEra era;
@@ -244,9 +246,13 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
     final eraColor = _hexToColor(era.color);
     final hasQuiz = _quizQuestions.isNotEmpty && !_quizLoading;
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
           title: Text(era.title),
           actions: [
             if (hasQuiz)
@@ -262,9 +268,13 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
               ),
           ],
           bottom: TabBar(
-            tabs: const [
-              Tab(icon: Icon(Icons.event), text: 'Events'),
-              Tab(icon: Icon(Icons.people), text: 'People'),
+            indicatorColor: eraColor,
+            labelColor: eraColor,
+            unselectedLabelColor: Colors.grey,
+            tabs: [
+              Tab(icon: Icon(Icons.event, color: eraColor), text: 'Events'),
+              Tab(icon: Icon(Icons.people, color: eraColor), text: 'People'),
+              Tab(icon: Icon(Icons.timeline, color: eraColor), text: 'Timeline'),
             ],
           ),
         ),
@@ -293,6 +303,12 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
                 final fig = era.figures[index];
                 return _buildFigureCard(context, fig, eraColor);
               },
+            ),
+            // Timeline
+            TimelineWidget(
+              events: era.events,
+              figures: era.figures,
+              eraColor: eraColor,
             ),
           ],
         ),
@@ -324,8 +340,8 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                color: isExpanded ? eraColor : Colors.grey[300]!,
-                width: isExpanded ? 2 : 1,
+                color: isExpanded ? eraColor : eraColor.withOpacity(0.3),
+                width: 2,
               ),
             ),
             child: Column(
@@ -557,9 +573,14 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
                                             ),
                                           );
                                         },
-                                        icon: const Icon(Icons.smart_toy),
+                                        icon: const Icon(Icons.smart_toy, color: Colors.white),
                                         label: const Text(
-                                          'Ask AI About This Event',
+                                          'Ask AI',
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: eraColor,
+                                          foregroundColor: Colors.white,
                                         ),
                                       ),
                                     ),
@@ -579,6 +600,10 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
                                         },
                                         icon: const Icon(Icons.open_in_full),
                                         label: const Text('View Full Details'),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: eraColor,
+                                          foregroundColor: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -610,9 +635,21 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
       margin: const EdgeInsets.only(bottom: 12),
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => PeopleDetailScreen(
+                figure: figure,
+                eraColor: eraColor,
+              ),
+            ),
+          );
+        },
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
@@ -646,52 +683,9 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
                     figure.portraitUrl!.isNotEmpty)
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: Image.network(
+                    child: _buildPortraitImage(
                       figure.portraitUrl!,
-                      width: 64,
-                      height: 64,
-                      fit: BoxFit.cover,
-                      // Gracefully handle 404s and other network errors
-                      errorBuilder: (context, error, stackTrace) {
-                        return Container(
-                          width: 64,
-                          height: 64,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[200],
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
-                              color: eraColor.withOpacity(0.3),
-                            ),
-                          ),
-                          child: Icon(Icons.person, color: eraColor, size: 32),
-                        );
-                      },
-                      loadingBuilder: (context, child, progress) {
-                        if (progress == null) return child;
-                        return Container(
-                          width: 64,
-                          height: 64,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[100],
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
-                              color: eraColor.withOpacity(0.2),
-                            ),
-                          ),
-                          child: SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              value: progress.expectedTotalBytes != null
-                                  ? (progress.cumulativeBytesLoaded /
-                                        progress.expectedTotalBytes!)
-                                  : null,
-                            ),
-                          ),
-                        );
-                      },
+                      eraColor,
                     ),
                   )
                 else
@@ -751,6 +745,67 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
           ],
         ),
       ),
+      ),
     );
+  }
+
+  Widget _buildPortraitImage(String url, Color eraColor) {
+    final isNetwork = Uri.tryParse(url)?.hasScheme == true &&
+        (url.startsWith('http://') || url.startsWith('https://'));
+    
+    final errorWidget = Container(
+      height: 64,
+      width: 64,
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: eraColor.withOpacity(0.3),
+        ),
+      ),
+      child: Icon(Icons.person, color: eraColor, size: 32),
+    );
+
+    if (isNetwork) {
+      return Image.network(
+        url,
+        height: 64,
+        fit: BoxFit.fitHeight,
+        errorBuilder: (context, error, stackTrace) => errorWidget,
+        loadingBuilder: (context, child, progress) {
+          if (progress == null) return child;
+          return Container(
+            height: 64,
+            width: 64,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Colors.grey[100],
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: eraColor.withOpacity(0.2),
+              ),
+            ),
+            child: SizedBox(
+              width: 20,
+              height: 20,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                value: progress.expectedTotalBytes != null
+                    ? (progress.cumulativeBytesLoaded /
+                          progress.expectedTotalBytes!)
+                    : null,
+              ),
+            ),
+          );
+        },
+      );
+    } else {
+      return Image.asset(
+        url,
+        height: 64,
+        fit: BoxFit.fitHeight,
+        errorBuilder: (context, error, stackTrace) => errorWidget,
+      );
+    }
   }
 }

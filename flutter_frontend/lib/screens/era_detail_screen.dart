@@ -9,6 +9,7 @@ import 'package:church_history_explorer/screens/era_quiz_screen.dart';
 import 'package:church_history_explorer/screens/event_detail_screen.dart';
 import 'package:church_history_explorer/screens/people_detail_screen.dart';
 import 'package:church_history_explorer/screens/timeline_widget.dart';
+import 'package:church_history_explorer/services/quiz_service.dart';
 
 class EraDetailScreen extends StatefulWidget {
   final ChurchHistoryEra era;
@@ -24,6 +25,7 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
   List<EraQuizQuestion> _quizQuestions = [];
   bool _quizLoading = false;
   bool _quizLoadFailed = false;
+  final QuizService _quizService = QuizService();
 
   static const int _quizQuestionLimit = 8;
 
@@ -41,15 +43,33 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
   }
 
   Future<void> _loadQuizHighScore() async {
+    // Try to load from backend first
+    final score = await _quizService.getHighScore(widget.era.id);
+    if (score != null && mounted) {
+      setState(() {
+        _quizHighScore = score;
+      });
+      return;
+    }
+
+    // Fallback to SharedPreferences
     final prefs = await SharedPreferences.getInstance();
-    final score = prefs.getInt('quiz_highscore_${widget.era.id}');
+    final localScore = prefs.getInt('quiz_highscore_${widget.era.id}');
     if (!mounted) return;
     setState(() {
-      _quizHighScore = score;
+      _quizHighScore = localScore;
     });
   }
 
   Future<void> _persistHighScore(int score) async {
+    // Save to backend
+    await _quizService.saveQuizScore(
+      eraId: widget.era.id,
+      score: score,
+      totalQuestions: _quizQuestionLimit,
+    );
+
+    // Also save locally as backup
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt('quiz_highscore_${widget.era.id}', score);
   }
@@ -61,7 +81,21 @@ class _EraDetailScreenState extends State<EraDetailScreen> {
     });
 
     try {
-      final path = 'assets/data/${widget.era.id}_quiz.json';
+      // Map era IDs to quiz file names
+      final quizFileMap = {
+        'early_church': 'early_church_quiz.json',
+        'imperial_church': 'imperial_church_quiz.json',
+        'medieval_church': 'medieval_church_quiz.json',
+        'reformation': 'reformation_quiz.json',
+        'modern_era': 'modern_era_quiz.json',
+      };
+
+      final fileName = quizFileMap[widget.era.id];
+      if (fileName == null) {
+        throw Exception('No quiz available for era: ${widget.era.id}');
+      }
+
+      final path = 'assets/data/$fileName';
       final jsonStr = await rootBundle.loadString(path);
       final decoded = jsonDecode(jsonStr) as Map<String, dynamic>;
       final list = decoded['questions'] as List<dynamic>? ?? [];

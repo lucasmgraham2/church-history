@@ -1,0 +1,292 @@
+{
+  "questions": [
+    {
+      "id": "ref_luther_theses",
+      "prompt": "Martin Luther's Ninety-Five Theses (1517) initially targeted what specific church practice?",
+      "options": [
+        "The sale of indulgences claiming to reduce punishment for sin",
+        "The practice of baptizing infants",
+        "The use of Latin in worship services",
+        "The requirement that clergy remain celibate"
+      ],
+      "correctAnswer": "The sale of indulgences claiming to reduce punishment for sin",
+      "explanation": "Luther challenged Johann Tetzel's indulgence sales, arguing that forgiveness comes through faith in Christ, not purchased certificates—sparking the Protestant Reformation."
+    },
+    {
+      "id": "ref_sola_scriptura",
+      "prompt": "The Reformation principle of 'sola scriptura' meant:",
+      "options": [
+        "Scripture alone is the final authority for Christian faith and practice",
+        "Only the Pope can interpret Scripture authoritatively",
+        "Church tradition holds equal authority with the Bible",
+        "Personal experience supersedes biblical teaching"
+      ],
+      "correctAnswer": "Scripture alone is the final authority for Christian faith and practice",
+      "explanation": "Reformers rejected papal and conciliar authority equal to Scripture, insisting the Bible is the supreme standard for doctrine and life—a cornerstone of Protestant theology."
+    },
+    {
+      "id": "ref_diet_worms",
+      "prompt": "At the Diet of Worms (1521), Luther famously declared 'Here I stand' when asked to:",
+      "options": [
+        "Recant his writings that challenged papal authority and church practices",
+        "Accept appointment as archbishop of an important diocese",
+        "Translate the entire Bible into German for common people",
+        "Lead a peasant rebellion against imperial authority"
+      ],
+      "correctAnswer": "Recant his writings that challenged papal authority and church practices",
+      "explanation": "Luther refused to recant unless convinced by Scripture and reason, defying Emperor Charles V and the Catholic Church—demonstrating the Reformation's commitment to biblical authority over institutional power."
+    },
+    {
+      "id": "ref_justification_faith",
+      "prompt": "Luther's doctrine of justification by faith alone taught that:",
+      "options": [
+        "Salvation is God's free gift received through faith, not earned by good works",
+        "Good works are necessary to complete the salvation Jesus started",
+        "Faith is unimportant; only moral living matters",
+        "Everyone is automatically saved regardless of belief"
+      ],
+      "correctAnswer": "Salvation is God's free gift received through faith, not earned by good works",
+      "explanation": "Based on Romans and Galatians, Luther argued righteousness comes from trusting Christ's finished work, not human merit—a revolutionary recovery of Pauline soteriology."
+    },
+    {
+      "id": "ref_zwingli_zurich",
+      "prompt": "Huldrych Zwingli's reforms in Zurich (1520s) differed from Luther's by:",
+      "options": [
+        "More radically removing images, liturgy, and non-biblical traditions",
+        "Maintaining Catholic mass and sacramental theology unchanged",
+        "Accepting papal authority while reforming local practices",
+        "Rejecting the Bible as authoritative"
+      ],
+      "correctAnswer": "More radically removing images, liturgy, and non-biblical traditions",
+      "explanation": "Zwingli's 'regulative principle' insisted only practices commanded in Scripture were permissible, leading to stripped-down worship and disagreement with Luther over the Lord's Supper."
+    },
+    {
+      "id": "ref_anabaptists",
+      "prompt": "Radical Reformers (Anabaptists) were persecuted by both Catholics and Protestants for advocating:",
+      "options": [
+        "Believer's baptism, separation of church and state, and pacifism",
+        "Infant baptism and state-church union",
+        "Violent overthrow of all governments",
+        "Worship of political leaders"
+      ],
+      "correctAnswer": "Believer's baptism, separation of church and state, and pacifism",
+      "explanation": "Anabaptists rejected infant baptism, state control of religion, and violence—principles both Catholic and magisterial Protestant authorities viewed as seditious, leading to severe persecution."
+    },
+    {
+      "id": "ref_calvin_institutes",
+      "prompt": "John Calvin's Institutes of the Christian Religion (1536) systematized Reformation theology around what central theme?",
+      "options": [
+        "God's sovereignty in salvation, providence, and all creation",
+        "Human free will as the determining factor in salvation",
+        "The church's authority over Scripture",
+        "Salvation through mystical experience alone"
+      ],
+      "correctAnswer": "God's sovereignty in salvation, providence, and all creation",
+      "explanation": "Calvin emphasized God's absolute sovereignty, including predestination and election, creating a comprehensive Reformed theology that shaped Presbyterianism and other traditions."
+    },
+    {
+      "id": "ref_geneva_reformation",
+      "prompt": "Calvin's Geneva became a model Reformed city by implementing:",
+      "options": [
+        "Church discipline, public morality enforcement, and theological education",
+        "Complete religious freedom without moral accountability",
+        "Catholic sacramental practices under Protestant leadership",
+        "Monarchy with divine right of kings"
+      ],
+      "correctAnswer": "Church discipline, public morality enforcement, and theological education",
+      "explanation": "The Genevan Consistory supervised public morals, the Academy trained pastors, and the city became a refuge for persecuted Protestants—a 'Protestant Rome' influencing Reformed churches worldwide."
+    },
+    {
+      "id": "ref_henry_viii",
+      "prompt": "The English Reformation under Henry VIII (1534) began primarily because:",
+      "options": [
+        "The Pope refused to annul Henry's marriage to Catherine of Aragon",
+        "Henry had a profound theological conversion to Protestant beliefs",
+        "Parliament demanded separation from Rome for doctrinal reasons",
+        "The Archbishop of Canterbury wanted to become Pope"
+      ],
+      "correctAnswer": "The Pope refused to annul Henry's marriage to Catherine of Aragon",
+      "explanation": "Henry's political need for a male heir led to the Act of Supremacy making him head of the Church of England—initially a political break with limited theological change."
+    },
+    {
+      "id": "ref_book_common_prayer",
+      "prompt": "Thomas Cranmer's Book of Common Prayer (1549, revised 1552) shaped Anglicanism by:",
+      "options": [
+        "Providing English liturgy balancing Catholic form and Protestant theology",
+        "Returning completely to Latin mass in all parish churches",
+        "Eliminating all liturgy in favor of spontaneous worship practices",
+        "Adopting Eastern Orthodox rites and worship practices"
+      ],
+      "correctAnswer": "Providing English liturgy balancing Catholic form and Protestant theology",
+      "explanation": "Cranmer's prayerbook made worship accessible in English while maintaining liturgical structure, creating the Anglican via media (middle way) between Rome and Geneva."
+    },
+    {
+      "id": "ref_council_trent",
+      "prompt": "The Catholic Counter-Reformation's Council of Trent (1545-1563) responded to Protestantism by:",
+      "options": [
+        "Reaffirming Catholic doctrine, reforming abuses, and balancing Scripture and tradition",
+        "Accepting all Protestant teachings and merging with Lutheran churches completely",
+        "Abandoning the papacy and all sacramental theology entirely",
+        "Rejecting the Bible entirely for Catholic practice"
+      ],
+      "correctAnswer": "Reaffirming Catholic doctrine, reforming abuses, and balancing Scripture and tradition",
+      "explanation": "Trent clarified Catholic teaching on justification, sacraments, and Scripture/tradition while addressing corruption—hardening confessional boundaries but renewing Catholic vitality."
+    },
+    {
+      "id": "ref_jesuits",
+      "prompt": "Ignatius of Loyola founded the Jesuits (1540) to advance the Counter-Reformation through:",
+      "options": [
+        "Education, missions, and direct service to the Pope",
+        "Armed crusades against Protestant territories",
+        "Rejection of all scholarship and learning",
+        "Establishing independent churches outside papal authority"
+      ],
+      "correctAnswer": "Education, missions, and direct service to the Pope",
+      "explanation": "The Society of Jesus combined rigorous spiritual discipline (Spiritual Exercises), intellectual training, and missionary zeal, becoming Catholicism's most influential reform order."
+    },
+    {
+      "id": "ref_knox_scotland",
+      "prompt": "John Knox established the Reformed Church of Scotland (1560) with what distinctive features?",
+      "options": [
+        "Presbyterian governance by elders and courts with strict Calvinist theology",
+        "Episcopal hierarchy identical to the Church of England",
+        "Congregational independence with no broader denominational structure",
+        "Retention of Catholic mass and papal authority"
+      ],
+      "correctAnswer": "Presbyterian governance by elders and courts with strict Calvinist theology",
+      "explanation": "Knox's Scottish Reformation created Presbyterianism—rule by presbyters (elders) through kirk sessions, presbyteries, and General Assembly, with Calvinist doctrine and simplified worship."
+    },
+    {
+      "id": "ref_huguenots_persecution",
+      "prompt": "French Huguenots (Reformed Protestants) faced persecution culminating in:",
+      "options": [
+        "The St. Bartholomew's Day Massacre (1572) killing thousands",
+        "Full legal equality and political power in France",
+        "Peaceful coexistence with Catholics throughout the 16th century",
+        "Government-funded Protestant churches nationwide"
+      ],
+      "correctAnswer": "The St. Bartholomew's Day Massacre (1572) killing thousands",
+      "explanation": "Catherine de Medici's court orchestrated mass killings of Huguenot leaders and civilians, intensifying France's Wars of Religion and demonstrating Reformation's violent political dimensions."
+    },
+    {
+      "id": "ref_edict_nantes",
+      "prompt": "King Henry IV's Edict of Nantes (1598) ended France's religious wars by:",
+      "options": [
+        "Granting Huguenots limited religious freedom and fortified safe cities",
+        "Forcing all Protestants to convert to Catholicism or face execution",
+        "Making Protestantism the only legal religion in France",
+        "Abolishing all religious practice in France"
+      ],
+      "correctAnswer": "Granting Huguenots limited religious freedom and fortified safe cities",
+      "explanation": "The edict provided toleration and security for Huguenots, demonstrating that religious coexistence was possible—though Louis XIV later revoked it (1685), forcing mass exile."
+    },
+    {
+      "id": "ref_thirty_years_war",
+      "prompt": "The Thirty Years' War (1618-1648) began as a religious conflict between:",
+      "options": [
+        "Catholic and Protestant states in the Holy Roman Empire",
+        "Eastern Orthodoxy and Roman Catholicism",
+        "Anglicans and Presbyterians in Britain",
+        "Muslims and Christians in Spain"
+      ],
+      "correctAnswer": "Catholic and Protestant states in the Holy Roman Empire",
+      "explanation": "The war started with Bohemian Protestant resistance to Catholic Habsburg rule, expanding into Europe's most destructive conflict until modern times, killing millions."
+    },
+    {
+      "id": "ref_westphalia_peace",
+      "prompt": "The Peace of Westphalia (1648) ended the Thirty Years' War and established what principle?",
+      "options": [
+        "Cuius regio, eius religio—rulers determine their territory's religion",
+        "Complete religious freedom for all individuals everywhere",
+        "Mandatory Catholicism throughout all European territories",
+        "Abolition of all state churches in favor of secularism"
+      ],
+      "correctAnswer": "Cuius regio, eius religio—rulers determine their territory's religion",
+      "explanation": "The treaties recognized religious plurality among states (Catholic, Lutheran, Reformed) while allowing rulers to set official religion—ending attempts to reunify Western Christianity by force."
+    },
+    {
+      "id": "ref_printing_press",
+      "prompt": "Gutenberg's printing press (invented c. 1440) accelerated the Reformation by:",
+      "options": [
+        "Enabling mass distribution of Luther's writings and vernacular Bibles",
+        "Preventing anyone from reading Reformation ideas",
+        "Restricting Bible access to clergy only",
+        "Eliminating all theological debate"
+      ],
+      "correctAnswer": "Enabling mass distribution of Luther's writings and vernacular Bibles",
+      "explanation": "Luther's pamphlets, Calvin's Institutes, and vernacular Scripture spread rapidly via print, democratizing theological debate and undermining church information control."
+    },
+    {
+      "id": "ref_translation_movement",
+      "prompt": "Reformation-era Bible translation into vernacular languages was significant because:",
+      "options": [
+        "It made Scripture accessible to ordinary people, challenging clerical interpretive monopoly",
+        "It proved Latin was the only acceptable biblical language",
+        "It eliminated all differences in biblical interpretation",
+        "It was universally welcomed by Catholic authorities"
+      ],
+      "correctAnswer": "It made Scripture accessible to ordinary people, challenging clerical interpretive monopoly",
+      "explanation": "Luther's German Bible, Tyndale's English translation, and others embodied sola scriptura by enabling laypeople to read and interpret God's Word—a revolutionary democratization."
+    },
+    {
+      "id": "ref_confessions_creeds",
+      "prompt": "Protestant confessions like the Augsburg Confession (1530) and Westminster Confession (1646) served what purpose?",
+      "options": [
+        "Defining doctrinal boundaries and unifying diverse Reformed communities",
+        "Replacing Scripture as the church's ultimate authority",
+        "Eliminating all theological diversity within Protestantism",
+        "Reconciling Protestants with the Catholic Church"
+      ],
+      "correctAnswer": "Defining doctrinal boundaries and unifying diverse Reformed communities",
+      "explanation": "Confessions clarified what each Protestant tradition believed, created accountability to shared doctrine, and distinguished Reformed orthodoxy from heterodoxy—shaping denominational identities."
+    },
+    {
+      "id": "ref_music_worship",
+      "prompt": "How did the Reformation transform Christian music and congregational worship?",
+      "options": [
+        "Introduced congregational hymn singing in vernacular languages",
+        "Banned all music from worship as worldly",
+        "Required all worship songs to be in Latin only",
+        "Eliminated congregational participation in worship"
+      ],
+      "correctAnswer": "Introduced congregational hymn singing in vernacular languages",
+      "explanation": "Luther's hymns ('A Mighty Fortress'), metrical psalms, and congregational participation replaced Latin choir dominance—making worship a communal act of praise and teaching."
+    },
+    {
+      "id": "ref_education_literacy",
+      "prompt": "Reformers promoted universal education and literacy primarily to:",
+      "options": [
+        "Enable everyone to read the Bible and understand Protestant doctrine",
+        "Train more clergy exclusively",
+        "Prevent people from reading dangerous books",
+        "Maintain illiteracy among the lower classes"
+      ],
+      "correctAnswer": "Enable everyone to read the Bible and understand Protestant doctrine",
+      "explanation": "Luther, Calvin, and others established schools (like Geneva Academy) insisting Christians must read Scripture themselves—linking Reformation to rising literacy and public education."
+    },
+    {
+      "id": "ref_marriage_clergy",
+      "prompt": "Protestant rejection of mandatory clerical celibacy and affirmation of ministerial marriage:",
+      "options": [
+        "Elevated marriage as a holy vocation equal to celibacy",
+        "Required all clergy to marry immediately",
+        "Rejected marriage as sinful for all Christians",
+        "Had no impact on church life or family structures"
+      ],
+      "correctAnswer": "Elevated marriage as a holy vocation equal to lifelong celibacy",
+      "explanation": "Luther, Zwingli, Calvin, and others married, modeling the 'Protestant parsonage' and teaching that marriage and family are godly callings, not spiritually inferior to monasticism."
+    },
+    {
+      "id": "ref_women_reformation",
+      "prompt": "Women like Katherine Zell and Argula von Grumbach participated in the Reformation through:",
+      "options": [
+        "Writing pamphlets, teaching, and defending Protestant theology publicly",
+        "Complete exclusion from all religious activity",
+        "Serving only as silent observers without voice",
+        "Leading armed rebellions against Catholic territories"
+      ],
+      "correctAnswer": "Writing pamphlets, teaching, and defending Protestant theology publicly",
+      "explanation": "Though denied ordination, educated women contributed to Reformation debates, hosted gatherings, and defended Protestant ideas—demonstrating complex gender dynamics in reform movements."
+    }
+  ]
+}

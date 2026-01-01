@@ -65,6 +65,10 @@ flutter:
   assets:
     - assets/data/church_history.json
     - assets/data/early_church_quiz.json
+    - assets/data/imperial_church_quiz.json
+    - assets/data/medieval_church_quiz.json
+    - assets/data/reformation_quiz.json
+    - assets/data/modern_era_quiz.json
     - assets/historical_images/
 
   # An image asset can refer to one or more resolution-specific "variants", see

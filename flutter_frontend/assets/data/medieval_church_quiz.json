@@ -1,0 +1,292 @@
+{
+  "questions": [
+    {
+      "id": "mc_rome_fall_impact",
+      "prompt": "The fall of Rome to Visigoths (410 AD) prompted Augustine to write City of God. What was his central argument?",
+      "options": [
+        "Christian hope rests on God's eternal city, not earthly empires like Rome",
+        "Christians should rebuild the Roman Empire through military conquest",
+        "The fall of Rome proved Christianity was false and had weakened the empire",
+        "Paganism should be restored to regain Rome's former glory"
+      ],
+      "correctAnswer": "Christian hope rests on God's eternal city, not earthly empires like Rome",
+      "explanation": "Augustine argued that Rome's fall didn't invalidate Christianity; rather, earthly cities rise and fall, but God's city endures eternally—a pivotal theological response to crisis."
+    },
+    {
+      "id": "mc_leo_attila",
+      "prompt": "Pope Leo I's negotiation with Attila the Hun (452 AD) demonstrated what new papal role?",
+      "options": [
+        "Diplomatic leadership filling gaps left by collapsed imperial authority",
+        "Military command of Christian armies defending Rome",
+        "Theological teaching limited strictly to church matters",
+        "Complete submission to barbarian rulers"
+      ],
+      "correctAnswer": "Diplomatic leadership filling gaps left by collapsed imperial authority",
+      "explanation": "As secular government crumbled, popes like Leo took on civic responsibilities, negotiating with threats and providing stability—precedent for medieval papal authority."
+    },
+    {
+      "id": "mc_chalcedon_definition",
+      "prompt": "The Council of Chalcedon (451 AD) defined Christ as one person in two natures. What happened to churches that rejected this formula?",
+      "options": [
+        "They formed Oriental Orthodox and Church of the East communities persisting today",
+        "They immediately accepted Chalcedon after brief resistance",
+        "They were militarily destroyed and ceased to exist",
+        "They merged with Islam when it emerged two centuries later"
+      ],
+      "correctAnswer": "They formed Oriental Orthodox and Church of the East communities persisting today",
+      "explanation": "Miaphysite churches (Coptic, Armenian, Ethiopian) and the Church of the East (Nestorian) rejected Chalcedon's formula, creating enduring divisions that shaped Christianity's eastern branches."
+    },
+    {
+      "id": "mc_patrick_ireland",
+      "prompt": "Patrick's mission to Ireland (after 432 AD) was distinctive because:",
+      "options": [
+        "It brought Christianity to a region never controlled by Rome, creating Celtic Christian culture",
+        "It was the first Christian mission anywhere outside Jerusalem",
+        "It used military force to compel conversion",
+        "It completely eliminated all Irish cultural practices"
+      ],
+      "correctAnswer": "It brought Christianity to a region never controlled by Rome, creating Celtic Christian culture",
+      "explanation": "Patrick's mission demonstrated Christianity could take root beyond Roman civilization, developing distinctive Irish monasticism that would later re-evangelize parts of Europe."
+    },
+    {
+      "id": "mc_benedict_rule",
+      "prompt": "Benedict of Nursia's Rule (c. 529 AD) shaped Western monasticism by emphasizing:",
+      "options": [
+        "Balanced life of prayer, manual labor, and Scripture reading under communal obedience",
+        "Extreme asceticism with no food, sleep, or human contact",
+        "Monasteries as military training centers for crusading armies",
+        "Individual monks living in complete isolation without any community"
+      ],
+      "correctAnswer": "Balanced life of prayer, manual labor, and Scripture reading under communal obedience",
+      "explanation": "The Rule's moderate wisdom—'ora et labora' (pray and work)—became the foundation for Benedictine monasteries that preserved learning and provided stability throughout medieval Europe."
+    },
+    {
+      "id": "mc_justinian_reconquest",
+      "prompt": "Emperor Justinian I's attempted reconquest of the Western Roman Empire (527-565 AD) had what impact on the church?",
+      "options": [
+        "Reasserted Byzantine control, creating tensions between Eastern and Western churches",
+        "Permanently reunited the Roman Empire under Constantinople",
+        "Led to immediate merger of Eastern and Western church hierarchies",
+        "Eliminated all theological differences between East and West"
+      ],
+      "correctAnswer": "Reasserted Byzantine control, creating tensions between Eastern and Western churches",
+      "explanation": "Justinian's military successes were temporary, and his theological interventions (like the Three Chapters controversy) deepened East-West ecclesiastical tensions."
+    },
+    {
+      "id": "mc_gregory_great",
+      "prompt": "Pope Gregory I ('the Great,' 590-604 AD) reformed the papacy by:",
+      "options": [
+        "Expanding papal administration, liturgy, and helping Rome's poor",
+        "Abolishing all papal authority and returning power to local bishops",
+        "Declaring himself emperor and merging church and state completely",
+        "Rejecting monasticism and closing all monasteries"
+      ],
+      "correctAnswer": "Expanding papal administration, liturgy, and helping Rome's poor",
+      "explanation": "Gregory organized relief during plague, sent Augustine to evangelize England, reformed liturgy (Gregorian chant), and developed medieval papal governance structures."
+    },
+    {
+      "id": "mc_columba_iona",
+      "prompt": "Columba's monastery at Iona (563 AD) became a center for:",
+      "options": [
+        "Celtic missionary work that evangelized Scotland and northern England",
+        "Military resistance against barbarian invasions",
+        "Rejection of all learning and scholarship",
+        "Exclusive focus on farming with no religious activity"
+      ],
+      "correctAnswer": "Celtic missionary work that evangelized Scotland and northern England",
+      "explanation": "Iona monks combined rigorous spirituality with missionary zeal, spreading Christianity across Scotland and northern England through a network of monasteries."
+    },
+    {
+      "id": "mc_augustine_canterbury",
+      "prompt": "Pope Gregory I sent Augustine of Canterbury to England (597 AD) with what instructions?",
+      "options": [
+        "Adapt local customs where possible while establishing Roman ecclesiastical order",
+        "Destroy all pagan temples and execute those who resisted conversion",
+        "Ignore Roman practices and adopt Celtic Christianity entirely",
+        "Build monasteries but never evangelize the Anglo-Saxons"
+      ],
+      "correctAnswer": "Adapt local customs where possible while establishing Roman ecclesiastical order",
+      "explanation": "Gregory's famous advice to adapt pagan temples as churches and local festivals as Christian holy days modeled contextual mission while maintaining doctrinal orthodoxy."
+    },
+    {
+      "id": "mc_synod_whitby",
+      "prompt": "The Synod of Whitby (664 AD) resolved disputes between Celtic and Roman Christianity by:",
+      "options": [
+        "Adopting Roman Easter dating and tonsure practices, aligning England with Rome",
+        "Rejecting both Roman and Celtic traditions in favor of new English practices",
+        "Splitting England permanently into Celtic and Roman jurisdictions",
+        "Abolishing all monasteries to eliminate the controversy"
+      ],
+      "correctAnswer": "Adopting Roman Easter dating and tonsure practices, aligning England with Rome",
+      "explanation": "King Oswy sided with Roman traditions based on Peter's authority, unifying English Christianity under papal order and accelerating Roman liturgical influence."
+    },
+    {
+      "id": "mc_iconoclasm_controversy",
+      "prompt": "The Byzantine Iconoclastic controversy (726-843 AD) centered on:",
+      "options": [
+        "Whether Christians could venerate icons or if all images violated the commandments",
+        "Whether priests could marry",
+        "Which city should be Christianity's capital",
+        "When to celebrate Easter"
+      ],
+      "correctAnswer": "Whether Christians could venerate icons or if all images violated the commandments",
+      "explanation": "Emperors like Leo III banned icons, sparking fierce theological and political conflict. The Second Council of Nicaea (787) affirmed icon veneration, though controversy persisted until 843."
+    },
+    {
+      "id": "mc_charlemagne_coronation",
+      "prompt": "Charlemagne's coronation as Holy Roman Emperor by Pope Leo III (800 AD) established what precedent?",
+      "options": [
+        "Papal authority to crown emperors, fusing religious and political power in medieval Christendom",
+        "Complete separation of church and state with no overlap",
+        "Byzantine emperor's sole right to govern all Christians",
+        "Abolition of all monarchies in favor of theocratic rule"
+      ],
+      "correctAnswer": "Papal authority to crown emperors, fusing religious and political power in medieval Christendom",
+      "explanation": "The coronation created the Holy Roman Empire and established the pattern of popes legitimizing secular rulers—a defining feature of medieval church-state relations."
+    },
+    {
+      "id": "mc_carolingian_renaissance",
+      "prompt": "Charlemagne's Carolingian Renaissance revived learning by:",
+      "options": [
+        "Establishing schools, preserving manuscripts, and standardizing Latin and liturgy",
+        "Burning all classical texts as pagan threats",
+        "Forbidding education for anyone outside the royal family",
+        "Replacing Latin with Germanic languages in all church services"
+      ],
+      "correctAnswer": "Establishing schools, preserving manuscripts, and standardizing Latin and liturgy",
+      "explanation": "Charlemagne recruited scholars like Alcuin to create palace schools, copy manuscripts, and reform liturgy, preserving classical and Christian learning through the Dark Ages."
+    },
+    {
+      "id": "mc_monastic_preservation",
+      "prompt": "Medieval monasteries preserved Western learning primarily through:",
+      "options": [
+        "Copying manuscripts of classical and Christian texts in scriptoriums",
+        "Translating all books into Arabic for Islamic scholars",
+        "Destroying pagan texts and rewriting history",
+        "Storing texts in locked vaults that no one could read"
+      ],
+      "correctAnswer": "Copying manuscripts of classical and Christian texts in scriptoriums",
+      "explanation": "Monastic scribes painstakingly copied ancient works, creating the manuscript tradition that preserved Greek philosophy, Roman literature, and biblical texts through medieval Europe."
+    },
+    {
+      "id": "mc_great_schism_1054",
+      "prompt": "The Great Schism of 1054 formally divided Christianity because of disagreements over:",
+      "options": [
+        "Papal authority, church language, and liturgical traditions",
+        "Whether Jesus was divine",
+        "Which books belong in the Bible",
+        "The date of Christmas"
+      ],
+      "correctAnswer": "Papal authority, church language, and liturgical traditions",
+      "explanation": "Rome's addition of 'filioque' to the Creed, papal claims over all bishops, and cultural differences (married priests, leavened bread) caused mutual excommunication between Rome and Constantinople."
+    },
+    {
+      "id": "mc_investiture_controversy",
+      "prompt": "The Investiture Controversy (1075-1122) concerned whether secular rulers could appoint bishops:",
+      "options": [
+        "The church claimed sole authority and fought for independence from secular rulers",
+        "Emperors always maintained complete control over all church appointments",
+        "The pope accepted all royal claims without significant conflict",
+        "The church never challenged secular authority in any way"
+      ],
+      "correctAnswer": "The church claimed sole authority and fought for independence from secular rulers",
+      "explanation": "Gregory VII's ban on lay investiture challenged royal power over church appointments. Henry's penance at Canossa and the Concordat of Worms (1122) established church independence from secular control."
+    },
+    {
+      "id": "mc_crusades_beginning",
+      "prompt": "Pope Urban II launched the First Crusade (1095) with what stated goal?",
+      "options": [
+        "Recapture Jerusalem and aid Byzantine Christians against Muslim expansion",
+        "Convert all Muslims to Christianity by force",
+        "Eliminate all Jews from Europe",
+        "Establish papal colonies in North Africa"
+      ],
+      "correctAnswer": "Recapture Jerusalem and aid Byzantine Christians against Muslim expansion",
+      "explanation": "Urban's Council of Clermont sermon promised spiritual rewards for reclaiming the Holy Land, launching centuries of crusading that shaped Christian-Muslim relations and church authority."
+    },
+    {
+      "id": "mc_scholasticism_rise",
+      "prompt": "Medieval scholasticism, developed in universities like Paris and Oxford, attempted to:",
+      "options": [
+        "Synthesize Christian theology with Aristotelian philosophy through rational inquiry",
+        "Reject all philosophy as incompatible with faith",
+        "Replace the Bible with Greek philosophical texts",
+        "Eliminate theological education completely"
+      ],
+      "correctAnswer": "Synthesize Christian theology with Aristotelian philosophy through rational inquiry",
+      "explanation": "Scholars like Peter Abelard and Thomas Aquinas used dialectical method to harmonize faith and reason, creating systematic theology that dominated medieval thought."
+    },
+    {
+      "id": "mc_aquinas_contribution",
+      "prompt": "Thomas Aquinas's Summa Theologica (1265-1274) made what enduring contribution to Christian thought?",
+      "options": [
+        "Comprehensive synthesis of Aristotelian philosophy and Christian doctrine",
+        "Rejection of all non-biblical sources for theology",
+        "Argument that God's existence cannot be known rationally",
+        "Complete acceptance of Islamic theology"
+      ],
+      "correctAnswer": "Comprehensive synthesis of Aristotelian philosophy and Christian doctrine",
+      "explanation": "Aquinas demonstrated that reason and revelation complement each other, providing philosophical proofs for God's existence and rational framework for Catholic theology still influential today."
+    },
+    {
+      "id": "mc_francis_assisi",
+      "prompt": "Francis of Assisi (1209) founded the Franciscan order emphasizing:",
+      "options": [
+        "Radical poverty, preaching, and service to the poor as Christ-like discipleship",
+        "Accumulation of wealth to fund church construction",
+        "Isolation from society in desert monasteries",
+        "Military service as the highest Christian calling"
+      ],
+      "correctAnswer": "Radical poverty, preaching, and service to the poor as Christ-like discipleship",
+      "explanation": "Francis renounced wealth, embraced creation spirituality, and sent mendicant friars to preach and serve—offering a reformist vision that renewed medieval piety within Catholic structures."
+    },
+    {
+      "id": "mc_black_death",
+      "prompt": "The Black Death (1347-1351) killed up to half of Europe's population. How did this crisis affect the medieval church?",
+      "options": [
+        "Decimated clergy, shook confidence in church authority, and fueled calls for reform",
+        "Strengthened the church by increasing piety universally",
+        "Had no impact on religious life",
+        "Led to immediate reconciliation between Eastern and Western churches"
+      ],
+      "correctAnswer": "Decimated clergy, shook confidence in church authority, and fueled calls for reform",
+      "explanation": "Massive death, failed prayers, and clergy shortages led many to question church power and teachings, contributing to late medieval reform movements and preparing ground for the Reformation."
+    },
+    {
+      "id": "mc_avignon_papacy",
+      "prompt": "The Avignon Papacy (1309-1377), when popes resided in France rather than Rome, was criticized as:",
+      "options": [
+        "Captivity of the church to French political interests, undermining papal independence",
+        "The golden age of papal spiritual authority",
+        "A necessary reform that improved church governance",
+        "An effort to evangelize France more effectively"
+      ],
+      "correctAnswer": "Captivity of the church to French political interests, undermining papal independence",
+      "explanation": "Called the 'Babylonian Captivity' by critics, the Avignon period saw popes perceived as tools of French kings, eroding papal prestige and contributing to the later Western Schism."
+    },
+    {
+      "id": "mc_wycliffe_lollards",
+      "prompt": "John Wycliffe's teachings (1370s-1384) and the Lollard movement challenged the medieval church by:",
+      "options": [
+        "Advocating Scripture in English, criticizing church wealth, and questioning transubstantiation",
+        "Supporting increased papal power over all Christians",
+        "Rejecting the Bible as authoritative",
+        "Calling for crusades against all non-Christians"
+      ],
+      "correctAnswer": "Advocating Scripture in English, criticizing church wealth, and questioning transubstantiation",
+      "explanation": "Wycliffe promoted biblical authority over tradition, challenged clerical corruption, and inspired the first complete English Bible—prefiguring Protestant Reformation themes."
+    },
+    {
+      "id": "mc_jan_hus",
+      "prompt": "Jan Hus was burned at the stake at the Council of Constance (1415) for:",
+      "options": [
+        "Preaching church reform, criticizing indulgences, and refusing to recant his views",
+        "Denying the Trinity",
+        "Supporting the Ottoman Empire",
+        "Advocating for Eastern Orthodoxy"
+      ],
+      "correctAnswer": "Preaching church reform, criticizing indulgences, and refusing to recant his views",
+      "explanation": "Hus built on Wycliffe's ideas, demanding reform in Bohemia. His execution made him a martyr and sparked the Hussite Wars, demonstrating growing resistance to church corruption."
+    }
+  ]
+}

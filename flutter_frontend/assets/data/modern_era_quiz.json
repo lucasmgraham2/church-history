@@ -1,0 +1,292 @@
+{
+  "questions": [
+    {
+      "id": "mod_enlightenment_religion",
+      "prompt": "The Enlightenment (1650-1800) challenged traditional Christianity by emphasizing:",
+      "options": [
+        "Human reason, natural rights, and skepticism toward revealed religion",
+        "Absolute submission to church authority without question",
+        "Mystical experience as the only path to truth",
+        "Return to medieval scholasticism"
+      ],
+      "correctAnswer": "Human reason, natural rights, and skepticism toward revealed religion",
+      "explanation": "Thinkers like Locke, Voltaire, and Hume promoted rational inquiry and questioned miracles, revelation, and institutional religion—forcing Christianity to engage modernity's intellectual challenges."
+    },
+    {
+      "id": "mod_american_freedom",
+      "prompt": "The First Amendment to the U.S. Constitution (1791) established what revolutionary principle?",
+      "options": [
+        "Prohibition of state-established religion and protection of free exercise",
+        "Mandatory Christianity as the sole national religion",
+        "Complete government control over all religious practice and belief",
+        "Outlawing all religious activity and gatherings entirely"
+      ],
+      "correctAnswer": "Prohibition of state-established religion and protection of free exercise",
+      "explanation": "Influenced by Enlightenment and Baptist dissenters, the First Amendment separated church and state, allowing religious pluralism and voluntary faith—a model that influenced global religious freedom."
+    },
+    {
+      "id": "mod_methodist_revival",
+      "prompt": "John Wesley's Methodist movement (1730s-1791) emphasized:",
+      "options": [
+        "Personal conversion, holiness, social compassion, and organized societies",
+        "Predestination without any human response or choice",
+        "Withdrawal from society into isolated monastic communities",
+        "Rejection of Scripture in favor of church tradition"
+      ],
+      "correctAnswer": "Personal conversion, holiness, social compassion, and organized societies",
+      "explanation": "Wesley's field preaching, class meetings, and emphasis on sanctification created Methodism—combining evangelical piety with social reform, becoming one of history's largest Protestant movements."
+    },
+    {
+      "id": "mod_great_awakening",
+      "prompt": "The First Great Awakening (1730s-1740s) in America featured:",
+      "options": [
+        "Mass revivals emphasizing conversion, emotional preaching, and lay participation",
+        "Quiet contemplation in established churches only",
+        "Government-mandated religious attendance",
+        "Rejection of evangelism and mission"
+      ],
+      "correctAnswer": "Mass revivals emphasizing conversion, emotional preaching, and lay participation",
+      "explanation": "Preachers like Jonathan Edwards and George Whitefield sparked widespread conversions through dramatic preaching, democratizing American religion and expanding Baptist and Methodist churches."
+    },
+    {
+      "id": "mod_carey_missions",
+      "prompt": "William Carey's 'Enquiry' (1792) launched the modern missionary movement by arguing:",
+      "options": [
+        "Christians must obey the Great Commission to evangelize all nations",
+        "Missions were completed in apostolic times and now unnecessary",
+        "Only ordained clergy could legitimately participate in evangelism",
+        "Non-European peoples were inherently unreachable for the gospel"
+      ],
+      "correctAnswer": "Christians must obey the Great Commission to evangelize all nations",
+      "explanation": "Carey challenged hyper-Calvinism's passivity, insisting believers must actively spread the gospel globally—catalyzing Protestant mission societies and cross-cultural evangelism."
+    },
+    {
+      "id": "mod_abolition_movement",
+      "prompt": "Christian abolitionists like William Wilberforce and Frederick Douglass argued slavery was wrong because:",
+      "options": [
+        "All humans bear God's image and deserve inherent dignity and freedom",
+        "Slavery was economically inefficient and unprofitable",
+        "The Bible explicitly endorsed slavery without any moral qualification",
+        "Abolition would increase the church's political and social power"
+      ],
+      "correctAnswer": "All humans bear God's image and deserve inherent dignity and freedom",
+      "explanation": "Evangelicals and Quakers used biblical arguments about human dignity, justice, and love to fight slavery in Britain and America, achieving legal abolition through sustained moral campaigns."
+    },
+    {
+      "id": "mod_social_gospel",
+      "prompt": "The Social Gospel movement (1880-1920) led by Walter Rauschenbusch emphasized:",
+      "options": [
+        "Applying Jesus's teachings to social problems like poverty and labor rights",
+        "Individual spiritual salvation only, completely ignoring social conditions",
+        "Violent revolution against capitalism and bourgeois society",
+        "Complete separation of personal faith from ethical concerns"
+      ],
+      "correctAnswer": "Applying Jesus's teachings to social problems like poverty and labor rights",
+      "explanation": "Social Gospelers argued Christianity required structural justice—fair wages, safe conditions, poverty relief—influencing progressive reforms but creating tensions with personal evangelism focus."
+    },
+    {
+      "id": "mod_fundamentalist_controversy",
+      "prompt": "The Fundamentalist-Modernist controversy (1910-1930) divided American Protestantism over:",
+      "options": [
+        "Biblical inerrancy, evolution theory, and cultural accommodation",
+        "Whether to use musical organs in worship services",
+        "The proper color and architectural style for church buildings",
+        "Whether missionaries should learn foreign languages first"
+      ],
+      "correctAnswer": "Biblical inerrancy, evolution theory, and cultural accommodation",
+      "explanation": "'The Fundamentals' defended core doctrines against liberal theology's acceptance of higher criticism and evolution, creating lasting evangelical-mainline divisions and the Scopes Trial spectacle."
+    },
+    {
+      "id": "mod_pentecostal_azusa",
+      "prompt": "The Azusa Street Revival (1906) under William J. Seymour launched Pentecostalism by emphasizing:",
+      "options": [
+        "Spirit baptism evidenced by tongues, healing, and interracial worship",
+        "Intellectual theological training prioritized above all spiritual experience",
+        "Strict racial segregation within all worship services and congregations",
+        "Cessation of all spiritual gifts after the apostolic age ended"
+      ],
+      "correctAnswer": "Spirit baptism evidenced by tongues, healing, and interracial worship",
+      "explanation": "Azusa's radical inclusivity and experiential spirituality sparked global Pentecostalism, now one of Christianity's largest families, especially in the Global South."
+    },
+    {
+      "id": "mod_barth_neo_orthodoxy",
+      "prompt": "Karl Barth's theology after World War I emphasized:",
+      "options": [
+        "God's transcendent Word confronting human sin and cultural idolatry",
+        "Human progress inevitably leading to God's kingdom",
+        "Christianity's complete identity with Western culture",
+        "Rejection of Scripture as revelation"
+      ],
+      "correctAnswer": "God's transcendent Word confronting human sin and cultural idolatry",
+      "explanation": "Disillusioned by liberal theology's support for war, Barth's 'crisis theology' reasserted God's otherness and Christ's centrality, renewing Protestant theology and resisting Nazi ideology."
+    },
+    {
+      "id": "mod_vatican_ii",
+      "prompt": "The Second Vatican Council (1962-1965) modernized Catholicism by:",
+      "options": [
+        "Vernacular liturgy, religious freedom, and ecumenical dialogue",
+        "Returning exclusively to Latin mass and traditional papal monarchy",
+        "Rejecting all meaningful engagement with the modern world",
+        "Abolishing all sacraments and the entire priesthood"
+      ],
+      "correctAnswer": "Vernacular liturgy, religious freedom, and ecumenical dialogue",
+      "explanation": "Vatican II's reforms—Mass in local languages, affirming conscience, dialoguing with other Christians and religions—transformed Catholic worship and global engagement while maintaining core doctrines."
+    },
+    {
+      "id": "mod_civil_rights_mlk",
+      "prompt": "Martin Luther King Jr.'s civil rights leadership drew on what Christian theological resources?",
+      "options": [
+        "Jesus's Sermon on the Mount, prophetic justice, and nonviolent love",
+        "Violent revolution as the only realistic path to justice",
+        "Complete separation of personal faith from political activism",
+        "Acceptance of racism as divinely ordained and unchangeable"
+      ],
+      "correctAnswer": "Jesus's Sermon on the Mount, prophetic justice, and nonviolent love",
+      "explanation": "King synthesized Jesus's ethics, black church tradition, and Gandhi's nonviolence to challenge segregation, demonstrating Christianity's power for social transformation and exposing white Christian complicity."
+    },
+    {
+      "id": "mod_liberation_theology",
+      "prompt": "Latin American liberation theology (1960s-1980s) argued that:",
+      "options": [
+        "God has special concern for the poor, and Gospel demands liberation from oppression",
+        "Poverty is God's will and should not be challenged or questioned",
+        "The wealthy deserve special theological privileges and priority",
+        "Politics and faith have no meaningful connection or relationship"
+      ],
+      "correctAnswer": "God has special concern for the poor, and Gospel demands liberation from oppression",
+      "explanation": "Gutierrez, Romero, and others insisted faith requires confronting systemic injustice, empowering base communities and influencing global theology despite Vatican critiques of Marxist analysis."
+    },
+    {
+      "id": "mod_charismatic_renewal",
+      "prompt": "The Charismatic Renewal movement (1960s-1980s) brought Pentecostal-style worship into:",
+      "options": [
+        "Mainline Protestant and Catholic churches previously unfamiliar with these practices",
+        "Exclusively Pentecostal and Holiness denominations that already practiced such worship",
+        "A small number of churches with no lasting organizational impact",
+        "Islamic mosques and other non-Christian religious communities"
+      ],
+      "correctAnswer": "Mainline Protestant and Catholic churches previously unfamiliar with these practices",
+      "explanation": "Charismatic renewal introduced tongues, healing, and expressive worship to Catholics, Episcopalians, and others, creating new vitality but also controversy within traditional denominations."
+    },
+    {
+      "id": "mod_global_south_shift",
+      "prompt": "By 2000, Christianity's demographic center had shifted to:",
+      "options": [
+        "Africa, Asia, and Latin America, where most Christians now live",
+        "Europe and North America exclusively",
+        "The Middle East primarily",
+        "Antarctica"
+      ],
+      "correctAnswer": "Africa, Asia, and Latin America, where most Christians now live",
+      "explanation": "Explosive growth through evangelism, Pentecostalism, and indigenous movements made the Global South Christianity's new heartland, diversifying theology, worship, and mission patterns."
+    },
+    {
+      "id": "mod_ecumenical_movement",
+      "prompt": "The modern ecumenical movement, birthed at Edinburgh (1910) and forming the World Council of Churches (1948), sought:",
+      "options": [
+        "Christian unity, cooperative mission, and theological dialogue across denominations",
+        "Complete merger of all churches into one single unified denomination immediately",
+        "Complete isolation of denominations from each other and all cooperation",
+        "Rejection of all serious theological conversation between traditions"
+      ],
+      "correctAnswer": "Christian unity, cooperative mission, and theological dialogue across denominations",
+      "explanation": "Ecumenism promoted cooperation in mission, social ethics, and theological exchange while respecting differences—though evangelical and Catholic participation varied over time."
+    },
+    {
+      "id": "mod_moral_majority",
+      "prompt": "The rise of the Religious Right in American politics (1970s-1980s) mobilized evangelicals around:",
+      "options": [
+        "Opposition to abortion, advocacy for traditional family values, and political conservatism",
+        "Complete withdrawal from all forms of political engagement and civic participation",
+        "Exclusively progressive social justice causes over all other concerns",
+        "Support for state atheism and elimination of religious freedom"
+      ],
+      "correctAnswer": "Opposition to abortion, advocacy for traditional family values, and political conservatism",
+      "explanation": "Leaders like Jerry Falwell organized evangelicals politically, making them a significant voting bloc and creating ongoing debates about Christianity's relationship to partisan politics."
+    },
+    {
+      "id": "mod_prosperity_gospel",
+      "prompt": "The prosperity gospel teaches that:",
+      "options": [
+        "Faith and positive confession produce health and wealth as God's will",
+        "Poverty and suffering are signs of deep spirituality",
+        "Material possessions are always sinful",
+        "God is indifferent to human physical circumstances"
+      ],
+      "correctAnswer": "Faith and positive confession produce health and wealth as God's will",
+      "explanation": "Popularized by televangelists and megachurches, prosperity teaching promises material blessing through faith, seed offerings, and positive confession—controversial for potentially distorting the Gospel."
+    },
+    {
+      "id": "mod_emerging_church",
+      "prompt": "The Emerging Church movement (1990s-2000s) questioned evangelical models by emphasizing:",
+      "options": [
+        "Postmodern cultural context, social justice, and contemporary worship forms",
+        "Return to traditional 1950s American fundamentalist theology and practice",
+        "Complete rejection of all doctrine and systematic theology",
+        "Militant political activism as the sole expression of faith"
+      ],
+      "correctAnswer": "Postmodern cultural context, social justice, and contemporary worship forms",
+      "explanation": "Emerging leaders critiqued consumerist megachurches and proposed narrative theology, ancient-future worship, and holistic mission—sparking debate about orthodoxy and cultural engagement."
+    },
+    {
+      "id": "mod_internet_church",
+      "prompt": "Digital technology and the internet have transformed modern Christianity by:",
+      "options": [
+        "Enabling online worship, global theological education, and information sharing",
+        "Eliminating all forms of Christian community and religious practice",
+        "Making physical churches and congregations completely obsolete",
+        "Preventing any meaningful Christian communication and connection"
+      ],
+      "correctAnswer": "Enabling online worship, global theological education, and information sharing",
+      "explanation": "The internet democratized access to sermons, courses, and global networks while raising questions about virtual community, digital discipleship, and the nature of embodied church."
+    },
+    {
+      "id": "mod_persecution_21st",
+      "prompt": "In the 21st century, Christian persecution is most severe in:",
+      "options": [
+        "Parts of the Middle East, North Africa, and South Asia under authoritarian or Islamist regimes",
+        "Western Europe and North America exclusively",
+        "Latin America universally",
+        "Sub-Saharan Africa only"
+      ],
+      "correctAnswer": "Parts of the Middle East, North Africa, and South Asia under authoritarian or Islamist regimes",
+      "explanation": "Christians face severe persecution in nations like North Korea, Pakistan, Nigeria, and parts of the Middle East, while ancient Christian communities in Iraq and Syria have nearly disappeared."
+    },
+    {
+      "id": "mod_covid_church",
+      "prompt": "The COVID-19 pandemic (2020-2021) forced churches to rapidly:",
+      "options": [
+        "Adopt online streaming, virtual community, and digital discipleship",
+        "Abandon all worship and religious practice",
+        "Meet in person without any safety precautions",
+        "Reject all technology permanently"
+      ],
+      "correctAnswer": "Adopt online streaming, virtual community, and digital discipleship",
+      "explanation": "Lockdowns accelerated digital church adoption, raising lasting questions about hybrid worship, online communion, community formation, and the future of congregational life."
+    },
+    {
+      "id": "mod_indigenous_theology",
+      "prompt": "Indigenous and contextual theologies in Africa, Asia, and Latin America emphasize:",
+      "options": [
+        "Reading Scripture through local cultural lenses while maintaining gospel integrity",
+        "Complete rejection of all local and indigenous culture as pagan",
+        "Identical replication of all Western theological forms and categories",
+        "Abandoning the Bible entirely for other religious sources"
+      ],
+      "correctAnswer": "Reading Scripture through local cultural lenses while maintaining gospel integrity",
+      "explanation": "Theologians like Kwame Bediako and Samuel Escobar developed contextual approaches honoring indigenous culture while proclaiming Christ, enriching global Christianity's theological diversity."
+    },
+    {
+      "id": "mod_science_dialogue",
+      "prompt": "Contemporary Christian engagement with science addresses questions like:",
+      "options": [
+        "Evolution, cosmology, bioethics, and faith-reason integration",
+        "Complete rejection of all scientific inquiry as inherently evil",
+        "Complete abandonment of personal faith in favor of scientism",
+        "Ignoring science and scientific knowledge entirely"
+      ],
+      "correctAnswer": "Evolution, cosmology, bioethics, and faith-reason integration",
+      "explanation": "Christians span views from young-earth creationism to evolutionary creation, engaging genetics, neuroscience, and climate change while seeking faithful integration of biblical and scientific knowledge."
+    }
+  ]
+}

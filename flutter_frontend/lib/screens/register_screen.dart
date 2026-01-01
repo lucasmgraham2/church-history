@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:church_history_explorer/services/auth_service.dart';
+import 'package:church_history_explorer/services/quiz_service.dart';
 import 'package:church_history_explorer/screens/home_screen.dart';
 import 'package:church_history_explorer/screens/login_screen.dart';
 
@@ -16,6 +17,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   final _authService = AuthService();
+  final _quizService = QuizService();
   bool _isLoading = false;
   bool _obscurePassword = true;
 
@@ -38,19 +40,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
       password: _passwordController.text,
     );
 
-    setState(() => _isLoading = false);
-
     if (result['success']) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
-      );
+      // Sync any local quiz scores to backend after successful registration
+      await _quizService.syncLocalScoresToBackend();
+      
+      setState(() => _isLoading = false);
+      
+      if (mounted) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
+      }
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(result['error'] ?? 'Registration failed'),
-          backgroundColor: Colors.red,
-        ),
-      );
+      setState(() => _isLoading = false);
+      
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(result['error'] ?? 'Registration failed'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
   }
 

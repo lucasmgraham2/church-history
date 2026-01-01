@@ -11,7 +11,7 @@ import os
 import time
 
 # Database setup
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://bariatric_user:bariatric_password@localhost:5432/bariatric_db")
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://church_user:church_password@localhost:5432/church_history_db")
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
@@ -44,6 +44,16 @@ class Patient(Base):
     bmi = Column(Float)
     status = Column(String)
 
+# Quiz score table
+class QuizScore(Base):
+    __tablename__ = "quiz_scores"
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, nullable=False, index=True)
+    era_id = Column(String, nullable=False, index=True)  # e.g., "early_church", "imperial_church"
+    score = Column(Integer, nullable=False)  # Number of correct answers
+    total_questions = Column(Integer, nullable=False)  # Total questions in quiz
+    timestamp = Column(Date, nullable=False)  # When the quiz was completed
+
 # Request/Response models
 class UserCreate(BaseModel):
     email: EmailStr
@@ -75,6 +85,22 @@ class PatientResponse(BaseModel):
     starting_weight: Optional[float]
     bmi: Optional[float]
     status: Optional[str]
+    
+    class Config:
+        from_attributes = True
+
+class QuizScoreCreate(BaseModel):
+    era_id: str
+    score: int
+    total_questions: int
+
+class QuizScoreResponse(BaseModel):
+    id: int
+    user_id: int
+    era_id: str
+    score: int
+    total_questions: int
+    timestamp: date
     
     class Config:
         from_attributes = True
@@ -361,6 +387,72 @@ def get_patient(patient_id: int, db: Session = Depends(get_db)):
     if not patient:
         raise HTTPException(status_code=404, detail="Patient not found")
     return patient
+
+@app.post("/me/{user_id}/quiz-scores", response_model=QuizScoreResponse)
+def save_quiz_score(user_id: int, quiz_score: QuizScoreCreate, db: Session = Depends(get_db)):
+    """
+    Save a quiz score for a user.
+    """
+    from datetime import datetime
+    print(f"Saving quiz score for user {user_id}, era {quiz_score.era_id}: {quiz_score.score}/{quiz_score.total_questions}")
+    
+    # Verify user exists
+    user = db.query(User).filter(User.id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    # Create new quiz score record
+    db_quiz_score = QuizScore(
+        user_id=user_id,
+        era_id=quiz_score.era_id,
+        score=quiz_score.score,
+        total_questions=quiz_score.total_questions,
+        timestamp=datetime.now().date()
+    )
+    db.add(db_quiz_score)
+    db.commit()
+    db.refresh(db_quiz_score)
+    print(f"Quiz score saved successfully with ID: {db_quiz_score.id}")
+    return db_quiz_score
+
+@app.get("/me/{user_id}/quiz-scores")
+def get_quiz_scores(user_id: int, era_id: Optional[str] = None, db: Session = Depends(get_db)):
+    """
+    Get all quiz scores for a user, optionally filtered by era_id.
+    Returns the most recent score for each era.
+    """
+    print(f"Fetching quiz scores for user {user_id}, era_id filter: {era_id}")
+    
+    # Verify user exists
+    user = db.query(User).filter(User.id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    query = db.query(QuizScore).filter(QuizScore.user_id == user_id)
+    
+    if era_id:
+        query = query.filter(QuizScore.era_id == era_id)
+    
+    # Get all scores ordered by timestamp descending
+    all_scores = query.order_by(QuizScore.timestamp.desc()).all()
+    
+    # Return most recent score per era
+    seen_eras = set()
+    recent_scores = []
+    for score in all_scores:
+        if score.era_id not in seen_eras:
+            seen_eras.add(score.era_id)
+            recent_scores.append({
+                "id": score.id,
+                "user_id": score.user_id,
+                "era_id": score.era_id,
+                "score": score.score,
+                "total_questions": score.total_questions,
+                "timestamp": score.timestamp.isoformat() if score.timestamp else None
+            })
+    
+    print(f"Found {len(recent_scores)} quiz scores for user {user_id}")
+    return {"scores": recent_scores}
 
 if __name__ == "__main__":
     import uvicorn

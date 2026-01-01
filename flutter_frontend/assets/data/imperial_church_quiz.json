@@ -1,0 +1,220 @@
+{
+  "questions": [
+    {
+      "id": "ic_constantine_conversion",
+      "prompt": "Constantine's conversion before the Battle of Milvian Bridge (312 AD) had what immediate impact on Christianity?",
+      "options": [
+        "Christianity gained imperial favor and began its transition from persecuted sect to state religion",
+        "Christianity remained illegal but persecution decreased temporarily",
+        "Constantine required all Roman citizens to convert immediately or face execution",
+        "The Church rejected Constantine's conversion as politically motivated"
+      ],
+      "correctAnswer": "Christianity gained imperial favor and began its transition from persecuted sect to state religion",
+      "explanation": "Constantine's victory under the Christian symbol and subsequent Edict of Milan (313 AD) legalized Christianity and granted it imperial patronage, fundamentally transforming the faith's status."
+    },
+    {
+      "id": "ic_nicaea_purpose",
+      "prompt": "What was the primary theological controversy addressed at the Council of Nicaea (325 AD)?",
+      "options": [
+        "Whether Jesus Christ was fully divine or a created being subordinate to God the Father",
+        "Whether Christians should worship on Saturday or Sunday",
+        "Whether the Pope had authority over all bishops or was merely first among equals",
+        "Whether baptism should be by immersion or sprinkling"
+      ],
+      "correctAnswer": "Whether Jesus Christ was fully divine or a created being subordinate to God the Father",
+      "explanation": "The council condemned Arianism, which taught Jesus was created, and affirmed that the Son is 'of one substance' (homoousios) with the Father—a defining moment for orthodox Christology."
+    },
+    {
+      "id": "ic_athanasius_role",
+      "prompt": "Athanasius of Alexandria's decades-long defense of Nicene theology demonstrated what about Early Church politics?",
+      "options": [
+        "Imperial power could exile bishops, but theological conviction and grassroots support could outlast political pressure",
+        "Emperors had absolute control over church doctrine without resistance",
+        "Theological debates were easily resolved through political compromise",
+        "Bishops who disagreed with emperors were immediately executed"
+      ],
+      "correctAnswer": "Imperial power could exile bishops, but theological conviction and grassroots support could outlast political pressure",
+      "explanation": "Athanasius was exiled five times by pro-Arian emperors but remained steadfast, and his persistence helped Nicene orthodoxy eventually triumph."
+    },
+    {
+      "id": "ic_edict_milan",
+      "prompt": "The Edict of Milan (313 AD) issued by Constantine and Licinius accomplished what legal change?",
+      "options": [
+        "Granted religious freedom to Christians and ended state persecution",
+        "Made Christianity the sole legal religion and banned all pagan worship",
+        "Required all citizens to attend Christian services weekly",
+        "Established the Pope as supreme ruler over the emperor"
+      ],
+      "correctAnswer": "Granted religious freedom to Christians and ended state persecution",
+      "explanation": "The edict legalized Christianity and returned confiscated property, allowing Christians to worship openly for the first time in Roman history."
+    },
+    {
+      "id": "ic_constantinople_significance",
+      "prompt": "Constantine's founding of Constantinople (330 AD) as the 'New Rome' had what long-term ecclesiastical consequence?",
+      "options": [
+        "Created a rival Christian power center in the East that would eventually lead to the Great Schism",
+        "Unified all Christian authority under a single city for the first time",
+        "Eliminated the importance of Jerusalem in Christian thought",
+        "Made Latin the universal language of Christian worship worldwide"
+      ],
+      "correctAnswer": "Created a rival Christian power center in the East that would eventually lead to the Great Schism",
+      "explanation": "Constantinople became the heart of Byzantine Christianity, developing distinct liturgical and theological traditions that diverged from Rome, culminating in the 1054 split."
+    },
+    {
+      "id": "ic_donatist_controversy",
+      "prompt": "The Donatist controversy centered on what question about church authority and holiness?",
+      "options": [
+        "Could clergy who had compromised during persecution still validly administer sacraments?",
+        "Should bishops be elected by congregations or appointed by emperors?",
+        "Could women serve as deacons in the early church?",
+        "Should churches use icons in worship or maintain empty sanctuaries?"
+      ],
+      "correctAnswer": "Could clergy who had compromised during persecution still validly administer sacraments?",
+      "explanation": "Donatists insisted that sacraments administered by 'traditores' (those who had handed over Scriptures during persecution) were invalid, while Catholics argued the sacraments' validity didn't depend on the minister's moral state."
+    },
+    {
+      "id": "ic_augustine_contribution",
+      "prompt": "Augustine of Hippo's theology shaped Western Christianity primarily through what doctrinal emphasis?",
+      "options": [
+        "Grace, predestination, and original sin as foundational to salvation",
+        "Human free will as sufficient for achieving righteousness without divine aid",
+        "The church's sacraments as optional aids to personal spirituality",
+        "Asceticism and withdrawal from society as the highest Christian calling"
+      ],
+      "correctAnswer": "Grace, predestination, and original sin as foundational to salvation",
+      "explanation": "Augustine's anti-Pelagian writings established that salvation depends entirely on God's grace, not human merit—a cornerstone of later Protestant and Catholic theology."
+    },
+    {
+      "id": "ic_ambrose_theodosius",
+      "prompt": "When Ambrose of Milan excommunicated Emperor Theodosius I (390 AD) for a massacre, what precedent did he establish?",
+      "options": [
+        "Church authority could hold even emperors morally accountable",
+        "Emperors had absolute power over church discipline",
+        "Bishops could overthrow secular rulers through military force",
+        "Christian emperors were exempt from all moral laws"
+      ],
+      "correctAnswer": "Church authority could hold even emperors morally accountable",
+      "explanation": "Theodosius performed public penance before being readmitted to communion, demonstrating that spiritual authority could transcend political power—a pivotal moment in church-state relations."
+    },
+    {
+      "id": "ic_jerome_vulgate",
+      "prompt": "Jerome's Latin Vulgate translation of the Bible (382-405 AD) was significant because:",
+      "options": [
+        "It made Scripture accessible in the common language of the Western Empire for over a millennium",
+        "It was the first translation of the Bible into any language",
+        "It eliminated all theological disputes by providing a perfect translation",
+        "It replaced Greek as the language of worship in Eastern churches"
+      ],
+      "correctAnswer": "It made Scripture accessible in the common language of the Western Empire for over a millennium",
+      "explanation": "Jerome's translation from Hebrew and Greek into Latin became the standard Bible of Western Christianity, used by the Catholic Church through the Reformation and beyond."
+    },
+    {
+      "id": "ic_monasticism_rise",
+      "prompt": "What motivated the rise of monasticism in the 4th century, particularly after Christianity became legal?",
+      "options": [
+        "Desire for radical Christian commitment when martyrdom was no longer the ultimate witness",
+        "Government requirements that all clergy live in isolated communities",
+        "Economic incentives offered by the empire to those who renounced possessions",
+        "Universal rejection of all forms of married life as sinful"
+      ],
+      "correctAnswer": "Desire for radical Christian commitment when martyrdom was no longer the ultimate witness",
+      "explanation": "Figures like Anthony and Pachomius sought spiritual intensity through asceticism and withdrawal, creating a 'white martyrdom' to replace the blood martyrdom that had ended with legalization."
+    },
+    {
+      "id": "ic_councils_authority",
+      "prompt": "Ecumenical councils like Nicaea (325) and Constantinople (381) established what model for resolving theological disputes?",
+      "options": [
+        "Bishops gathering under imperial sponsorship to define orthodox doctrine",
+        "Individual churches deciding doctrine independently without coordination",
+        "The Roman Pope unilaterally declaring truth without consultation",
+        "Scripture alone without any human interpretation or church authority"
+      ],
+      "correctAnswer": "Bishops gathering under imperial sponsorship to define orthodox doctrine",
+      "explanation": "Councils became the church's primary mechanism for achieving doctrinal consensus, bringing together bishops from across the empire to debate and vote on theological questions."
+    },
+    {
+      "id": "ic_theodosian_code",
+      "prompt": "The Theodosian Code (438 AD) showed Christianity's transformation by:",
+      "options": [
+        "Codifying Christian legal privileges and restricting pagan practices through imperial law",
+        "Separating church and state completely with no legal overlap",
+        "Granting equal legal status to all religions throughout the empire",
+        "Abolishing all Roman law in favor of biblical legal codes"
+      ],
+      "correctAnswer": "Codifying Christian legal privileges and restricting pagan practices through imperial law",
+      "explanation": "The code formalized Christianity's favored status, prohibited pagan sacrifices, and integrated Christian moral teachings into Roman legal tradition."
+    },
+    {
+      "id": "ic_chrysostom_preaching",
+      "prompt": "John Chrysostom earned his nickname ('Golden Mouth') through what contribution to the Imperial Church?",
+      "options": [
+        "Powerful biblical preaching that applied Scripture to social ethics and personal holiness",
+        "Negotiating peace treaties between warring emperors",
+        "Composing the first Christian hymnal for congregational singing",
+        "Designing the architectural plans for major basilicas"
+      ],
+      "correctAnswer": "Powerful biblical preaching that applied Scripture to social ethics and personal holiness",
+      "explanation": "Chrysostom's expository sermons in Antioch and Constantinople combined theological depth with practical application, making him one of history's most influential preachers."
+    },
+    {
+      "id": "ic_pelagianism_debate",
+      "prompt": "The Pelagian controversy forced the church to clarify its teaching on:",
+      "options": [
+        "The relationship between human free will and divine grace in salvation",
+        "Whether the Trinity consisted of three persons or one",
+        "The proper day to celebrate Easter each year",
+        "Which books belonged in the biblical canon"
+      ],
+      "correctAnswer": "The relationship between human free will and divine grace in salvation",
+      "explanation": "Pelagius taught that humans could achieve righteousness through moral effort; Augustine and the councils condemned this, affirming that grace is necessary and prevenient."
+    },
+    {
+      "id": "ic_leo_chalcedon",
+      "prompt": "Pope Leo I's Tome presented at the Council of Chalcedon (451 AD) articulated what Christological formula?",
+      "options": [
+        "Jesus Christ is one person with two natures—fully divine and fully human",
+        "Jesus Christ had only a divine nature, with humanity as appearance",
+        "Jesus Christ was a human adopted by God at baptism",
+        "Jesus Christ's divine and human natures merged into a single hybrid nature"
+      ],
+      "correctAnswer": "Jesus Christ is one person with two natures—fully divine and fully human",
+      "explanation": "The Chalcedonian Definition, heavily influenced by Leo's Tome, established orthodox Christology: Christ is one person in two distinct but united natures."
+    },
+    {
+      "id": "ic_imperial_patronage",
+      "prompt": "How did imperial patronage change church architecture and worship in the 4th century?",
+      "options": [
+        "Grand basilicas replaced house churches, and liturgy became more formal and ceremonial",
+        "Christians continued meeting only in homes to preserve simplicity",
+        "All church buildings were destroyed to emphasize spiritual rather than physical worship",
+        "Worship became entirely silent meditation without music or speech"
+      ],
+      "correctAnswer": "Grand basilicas replaced house churches, and liturgy became more formal and ceremonial",
+      "explanation": "Constantine funded massive churches like St. Peter's Basilica and the Church of the Holy Sepulchre, transforming Christian worship from intimate gatherings to public, elaborate ceremonies."
+    },
+    {
+      "id": "ic_arianism_persistence",
+      "prompt": "Why did Arianism persist for decades after Nicaea condemned it in 325 AD?",
+      "options": [
+        "Several emperors favored Arian theology and supported Arian bishops politically",
+        "The Council of Nicaea was universally ignored by all churches",
+        "Athanasius and other Nicene defenders immediately abandoned their position",
+        "Scripture clearly taught Arianism, making Nicaea's decision unpopular"
+      ],
+      "correctAnswer": "Several emperors favored Arian theology and supported Arian bishops politically",
+      "explanation": "Emperors like Constantius II and Valens supported Arian theology, using imperial power to install Arian bishops and exile Nicene defenders, creating decades of theological conflict."
+    },
+    {
+      "id": "ic_cappadocian_fathers",
+      "prompt": "The Cappadocian Fathers (Basil, Gregory of Nazianzus, Gregory of Nyssa) advanced Nicene theology by:",
+      "options": [
+        "Clarifying the Trinity as three persons (hypostases) sharing one essence (ousia)",
+        "Rejecting the Trinity entirely in favor of modalism",
+        "Arguing that the Holy Spirit was not divine",
+        "Claiming that Father, Son, and Spirit were three separate gods"
+      ],
+      "correctAnswer": "Clarifying the Trinity as three persons (hypostases) sharing one essence (ousia)",
+      "explanation": "The Cappadocians refined Trinitarian language, distinguishing between the three persons and the one divine nature, helping Nicene orthodoxy triumph at Constantinople (381 AD)."
+    }
+  ]
+}
